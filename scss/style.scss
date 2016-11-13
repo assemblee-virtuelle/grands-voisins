@@ -4,6 +4,10 @@ body {
   color: #555;
 }
 
+a {
+  color: #BB6600;
+}
+
 $shadow_min: 0px 1px 2px rgba(0, 0, 0, 0.3);
 
 header {
@@ -20,6 +24,7 @@ header {
       margin: 10px;
     }
     span {
+      color: #CCC;
       display: none;
     }
   }
@@ -44,6 +49,10 @@ header {
         }
       }
     }
+  }
+  input[type=submit] {
+    background: #FFCC00;
+    border: 0;
   }
 }
 
