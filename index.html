@@ -14,6 +14,8 @@
     <!-- <script src="dist/script.min.js"></script> -->
     <script src="src/script.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <!-- components -->
+    <link rel="import" href="comp/search-result.html">
 </head>
 <body>
 <header>
@@ -21,7 +23,7 @@
         <h1>
             <a>
                 <img alt="Les Grands Voisins - logo"
-                     src="img/logo_les-grands-voisins-white.png">
+                     src="images/logo_les-grands-voisins-white.png">
                 <span>Les Grands Voisins</span>
             </a>
         </h1>
@@ -34,7 +36,8 @@
     <div class="search row">
         <form id="searchForm">
             <div class="col col-sm-10">
-                <input id="searchText" class="form-control" type="text" placeholder="Entrez ici un terme de recherche...">
+                <input id="searchText" class="form-control" type="text"
+                       placeholder="Entrez ici un terme de recherche...">
             </div>
             <div class="col col-sm-2">
                 <input class="form-control btn btn-info" type="submit" value="Ok">

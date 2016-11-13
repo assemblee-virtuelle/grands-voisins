@@ -95,6 +95,10 @@
       // Lets go.
       xhr.send(data);
     }
+
+    renderSearchResult(data) {
+
+    }
   };
 
   $(function () {
