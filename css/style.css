@@ -32,36 +32,43 @@ header {
 #gvMap {
   background: #F0F0F0;
   height: 30vw; }
+  /* line 36, ../scss/style.scss */
+  #gvMap .mapContent {
+    background: url("../img/map.jpg");
+    height: 100%;
+    background-size: 100%;
+    background-position: 50% 50%;
+    box-shadow: inset 2px 1px 12px rgba(0, 0, 0, 0.2); }
 
-/* line 38, ../scss/style.scss */
+/* line 45, ../scss/style.scss */
 .search {
   margin: 10px 0; }
-  /* line 40, ../scss/style.scss */
+  /* line 47, ../scss/style.scss */
   .search .nav {
     margin: 0 15px; }
-    /* line 42, ../scss/style.scss */
+    /* line 49, ../scss/style.scss */
     .search .nav li {
       margin-top: 10px; }
-      /* line 44, ../scss/style.scss */
+      /* line 51, ../scss/style.scss */
       .search .nav li a {
         padding-left: 15px; }
-        /* line 46, ../scss/style.scss */
+        /* line 53, ../scss/style.scss */
         .search .nav li a span {
           margin-left: 0;
           margin-right: 8px; }
-  /* line 53, ../scss/style.scss */
+  /* line 60, ../scss/style.scss */
   .search input[type=submit] {
     background: #FFCC00;
     border: 0; }
 
-/* line 60, ../scss/style.scss */
+/* line 67, ../scss/style.scss */
 .search-results li {
   list-style: none; }
-/* line 63, ../scss/style.scss */
+/* line 70, ../scss/style.scss */
 .search-results p {
   text-align: justify; }
 
-/* line 73, ../scss/style.scss */
+/* line 80, ../scss/style.scss */
 footer {
   background-color: #F0F0F0;
   padding: 20px;

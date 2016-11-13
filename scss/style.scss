@@ -33,6 +33,13 @@ header {
 #gvMap {
   background: #F0F0F0;
   height: 30vw;
+  .mapContent {
+    background: url("../img/map.jpg");
+    height: 100%;
+    background-size: 100%;
+    background-position: 50% 50%;
+    box-shadow: inset 2px 1px 12px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .search {

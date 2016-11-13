@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/assemblee-virtuelle/grands-voisins/issues"
   },
-  "homepage": "https://github.com/assemblee-virtuelle/grands-voisins#readme"
+  "homepage": "https://github.com/assemblee-virtuelle/grands-voisins#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.18.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-sourcemaps": "^2.2.0",
+    "gulp-uglify": "^2.0.0"
+  }
 }
