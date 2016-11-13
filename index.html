@@ -1,232 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Les Grands Voisins - Cartographie</title>
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <link type="text/css" rel="stylesheet"
-        href="node_modules/bootstrap/dist/css/bootstrap.css">
-  <link type="text/css" rel="stylesheet"
-        href="css/style.css">
-  <link type="text/css" rel="stylesheet"
-        href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
-  <!-- <script src="dist/script.min.js"></script> -->
-  <script src="src/script.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Les Grands Voisins - Cartographie</title>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet"
+          href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet"
+          href="css/style.css">
+    <link type="text/css" rel="stylesheet"
+          href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+    <!-- <script src="dist/script.min.js"></script> -->
+    <script src="src/script.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 </head>
 <body>
 <header>
-  <div class="container">
-    <h1>
-      <a>
-        <img alt="Les Grands Voisins - logo"
-             src="img/logo_les-grands-voisins-white.png">
-        <span>Les Grands Voisins</span>
-      </a>
-    </h1>
-  </div>
+    <div class="container">
+        <h1>
+            <a>
+                <img alt="Les Grands Voisins - logo"
+                     src="img/logo_les-grands-voisins-white.png">
+                <span>Les Grands Voisins</span>
+            </a>
+        </h1>
+    </div>
 </header>
 <div id="gvMap">
-  <div class="mapContent"></div>
+    <div class="mapContent"></div>
 </div>
 <div class="container">
-  <div class="search row">
-    <div class="col col-sm-10">
-      <input class="form-control" type="text">
+    <div class="search row">
+        <form id="searchForm">
+            <div class="col col-sm-10">
+                <input id="searchText" class="form-control" type="text" placeholder="Entrez ici un terme de recherche...">
+            </div>
+            <div class="col col-sm-2">
+                <input class="form-control btn btn-info" type="submit" value="Ok">
+            </div>
+        </form>
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active">
+                <a href="#">
+                    <span class="glyphicon glyphicon-th-list"></span>Tout
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#" class="">
+                    <span class="glyphicon glyphicon-road"></span>
+                    Projets
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#">
+                    <span class="glyphicon glyphicon-user"></span>
+                    Acteurs
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#">
+                    <span class="glyphicon glyphicon-asterisk"></span>
+                    Idées
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#">
+                    <span class="glyphicon glyphicon-tree-deciduous"></span>
+                    Ressources
+                </a>
+            </li>
+        </ul>
     </div>
-    <div class="col col-sm-2">
-      <input class="form-control btn btn-info" type="submit" value="Ok">
+
+    <div class="search-results">
+        <ul>
+            <li>
+                <h3>Title 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat
+                    nisl varius elit tincidunt malesuada. Nam ultricies eleifend augue nec
+                    vestibulum. Etiam malesuada orci quis varius imperdiet. In porttitor
+                    id sem id commodo. Donec eget blandit risus, molestie mattis sapien.
+                    Curabitur aliquet arcu ac est malesuada, eu faucibus libero pharetra.
+                    Phasellus volutpat sed augue laoreet luctus. In urna quam, pharetra a
+                    dictum non, dignissim in dolor. Vestibulum ullamcorper vestibulum
+                    urna, nec ornare dui tempus quis. Phasellus pretium, mauris sed
+                    dignissim congue, nisl est pellentesque arcu, in finibus neque ligula
+                    sed libero. Nullam quam ex, ultrices in ultrices convallis, posuere at
+                    est. Proin sagittis urna sapien, sit amet cursus diam venenatis a.</p>
+            </li>
+            <li>
+                <h3>Title 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+                    maximus posuere erat, vitae dapibus nisl lobortis eget. Aenean est
+                    justo, placerat et pellentesque non, condimentum quis lacus. Quisque
+                    tempor nisi lectus, eget mollis dui aliquam ac. Quisque neque ligula,
+                    mollis id tellus eget, tristique sagittis velit. Duis vulputate enim
+                    quis tellus malesuada vulputate non at erat. Nam euismod diam vitae
+                    ipsum dapibus porta. Proin aliquet neque ac lectus ornare aliquet.
+                    Donec commodo viverra erat sit amet luctus. Lorem ipsum dolor sit
+                    amet, consectetur adipiscing elit. Suspendisse posuere scelerisque
+                    tellus, feugiat pharetra massa lacinia ultrices.</p>
+            </li>
+            <li>
+                <h3>Title 1</h3>
+                <p>Curabitur ut fringilla metus, quis tempus justo. Etiam sodales
+                    iaculis est pharetra posuere. Cum sociis natoque penatibus et magnis
+                    dis parturient montes, nascetur ridiculus mus. Aliquam sit amet nisl
+                    leo. Pellentesque pharetra augue a hendrerit viverra. In semper nisl
+                    enim, eu varius lectus eleifend nec. Fusce placerat fringilla ipsum.
+                    Morbi felis mi, egestas eget metus vitae, tristique consectetur magna.
+                    Ut vel arcu in felis commodo dictum a quis leo.</p>
+            </li>
+        </ul>
     </div>
-    <ul class="nav nav-tabs">
-      <li role="presentation" class="active">
-        <a href="#">
-          <span class="glyphicon glyphicon-th-list"></span>Tout
-        </a>
-      </li>
-      <li role="presentation">
-        <a href="#" class="">
-          <span class="glyphicon glyphicon-road"></span>
-          Projets
-        </a>
-      </li>
-      <li role="presentation">
-        <a href="#">
-          <span class="glyphicon glyphicon-user"></span>
-          Acteurs
-        </a>
-      </li>
-      <li role="presentation">
-        <a href="#">
-          <span class="glyphicon glyphicon-asterisk"></span>
-          Idées
-        </a>
-      </li>
-      <li role="presentation">
-        <a href="#">
-          <span class="glyphicon glyphicon-tree-deciduous"></span>
-          Ressources
-        </a>
-      </li>
-    </ul>
-  </div>
 
-  <div class="search-results">
-    <ul>
-      <li>
-        <h3>Title 1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat
-          nisl varius elit tincidunt malesuada. Nam ultricies eleifend augue nec
-          vestibulum. Etiam malesuada orci quis varius imperdiet. In porttitor
-          id sem id commodo. Donec eget blandit risus, molestie mattis sapien.
-          Curabitur aliquet arcu ac est malesuada, eu faucibus libero pharetra.
-          Phasellus volutpat sed augue laoreet luctus. In urna quam, pharetra a
-          dictum non, dignissim in dolor. Vestibulum ullamcorper vestibulum
-          urna, nec ornare dui tempus quis. Phasellus pretium, mauris sed
-          dignissim congue, nisl est pellentesque arcu, in finibus neque ligula
-          sed libero. Nullam quam ex, ultrices in ultrices convallis, posuere at
-          est. Proin sagittis urna sapien, sit amet cursus diam venenatis a.</p>
-      </li>
-      <li>
-        <h3>Title 1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-          maximus posuere erat, vitae dapibus nisl lobortis eget. Aenean est
-          justo, placerat et pellentesque non, condimentum quis lacus. Quisque
-          tempor nisi lectus, eget mollis dui aliquam ac. Quisque neque ligula,
-          mollis id tellus eget, tristique sagittis velit. Duis vulputate enim
-          quis tellus malesuada vulputate non at erat. Nam euismod diam vitae
-          ipsum dapibus porta. Proin aliquet neque ac lectus ornare aliquet.
-          Donec commodo viverra erat sit amet luctus. Lorem ipsum dolor sit
-          amet, consectetur adipiscing elit. Suspendisse posuere scelerisque
-          tellus, feugiat pharetra massa lacinia ultrices.</p>
-      </li>
-      <li>
-        <h3>Title 1</h3>
-        <p>Curabitur ut fringilla metus, quis tempus justo. Etiam sodales
-          iaculis est pharetra posuere. Cum sociis natoque penatibus et magnis
-          dis parturient montes, nascetur ridiculus mus. Aliquam sit amet nisl
-          leo. Pellentesque pharetra augue a hendrerit viverra. In semper nisl
-          enim, eu varius lectus eleifend nec. Fusce placerat fringilla ipsum.
-          Morbi felis mi, egestas eget metus vitae, tristique consectetur magna.
-          Ut vel arcu in felis commodo dictum a quis leo.</p>
-      </li>
-    </ul>
-  </div>
-
-  <div class="detail">
-    <div class="row">
-      <div class="col col-sm-8">
-        <h2>Acteur choisi</h2>
-        <span class="glyphicon glyphicon-edit">
+    <div class="detail">
+        <div class="row">
+            <div class="col col-sm-8">
+                <h2>Acteur choisi</h2>
+                <span class="glyphicon glyphicon-edit">
         </span>
-        <div class="detail-header row">
-          <div class="detail-header col col-sm-4">
-            <img src="">
-          </div>
-          <div class="detail-header col col-sm-8">
+                <div class="detail-header row">
+                    <div class="detail-header col col-sm-4">
+                        <img src="">
+                    </div>
+                    <div class="detail-header col col-sm-8">
 
-          </div>
+                    </div>
+                </div>
+                <div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+                        non ipsum ut massa ultricies luctus a vel nunc. Ut ut arcu et ante
+                        ullamcorper mattis. Integer facilisis vestibulum orci, in dapibus
+                        enim
+                        bibendum in. Nullam consequat dictum odio, ut gravida libero mattis
+                        ac. Donec at mauris vitae nisl dictum mattis eget suscipit neque.
+                        Curabitur tincidunt nulla odio, a lacinia ante ornare quis. Cras
+                        efficitur quam ut nibh fermentum, sed pharetra nunc luctus. Donec
+                        luctus, erat eu aliquet rutrum, elit urna dictum enim, quis mattis
+                        lectus lorem at mauris. Nunc ut nibh sit amet est tincidunt
+                        tincidunt
+                        in in enim. Etiam vel felis mauris. In gravida urna eu libero
+                        pellentesque, a venenatis leo ornare.</p>
+                    <p>Phasellus feugiat in odio dignissim feugiat. Donec nec pulvinar
+                        orci.
+                        Etiam eros nisl, cursus tincidunt accumsan sit amet, consectetur vel
+                        odio. Class aptent taciti sociosqu ad litora torquent per conubia
+                        nostra, per inceptos himenaeos. Etiam mollis interdum dapibus. Duis
+                        tristique justo eget faucibus viverra. Maecenas iaculis metus at
+                        eros
+                        luctus semper. In urna urna, bibendum in malesuada vitae, ornare in
+                        purus. Sed pharetra ultrices malesuada.</p>
+                </div>
+            </div>
+            <div class="col col-sm-4">
+                <div class="block">
+                    <h3>Projets</h3>
+                    <ul>
+                        <li>
+                            <a href="#">Item 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Item 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Item 3</a>
+                        </li>
+                        <li>
+                            <a href="#">Item 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="block">
+                    <h3>Acteurs</h3>
+                    <ul>
+                        <li>
+                            <a href="#">Item 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Item 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Item 3</a>
+                        </li>
+                        <li>
+                            <a href="#">Item 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="block">
+                    <h3>Idées</h3>
+                    <ul>
+                        <li>
+                            <a href="#">Item 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Item 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Item 3</a>
+                        </li>
+                        <li>
+                            <a href="#">Item 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="block">
+                    <h3>Ressources</h3>
+                    <ul>
+                        <li>
+                            <a href="#">Item 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Item 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Item 3</a>
+                        </li>
+                        <li>
+                            <a href="#">Item 4</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-            non ipsum ut massa ultricies luctus a vel nunc. Ut ut arcu et ante
-            ullamcorper mattis. Integer facilisis vestibulum orci, in dapibus
-            enim
-            bibendum in. Nullam consequat dictum odio, ut gravida libero mattis
-            ac. Donec at mauris vitae nisl dictum mattis eget suscipit neque.
-            Curabitur tincidunt nulla odio, a lacinia ante ornare quis. Cras
-            efficitur quam ut nibh fermentum, sed pharetra nunc luctus. Donec
-            luctus, erat eu aliquet rutrum, elit urna dictum enim, quis mattis
-            lectus lorem at mauris. Nunc ut nibh sit amet est tincidunt
-            tincidunt
-            in in enim. Etiam vel felis mauris. In gravida urna eu libero
-            pellentesque, a venenatis leo ornare.</p>
-          <p>Phasellus feugiat in odio dignissim feugiat. Donec nec pulvinar
-            orci.
-            Etiam eros nisl, cursus tincidunt accumsan sit amet, consectetur vel
-            odio. Class aptent taciti sociosqu ad litora torquent per conubia
-            nostra, per inceptos himenaeos. Etiam mollis interdum dapibus. Duis
-            tristique justo eget faucibus viverra. Maecenas iaculis metus at
-            eros
-            luctus semper. In urna urna, bibendum in malesuada vitae, ornare in
-            purus. Sed pharetra ultrices malesuada.</p>
-        </div>
-      </div>
-      <div class="col col-sm-4">
-        <div class="block">
-          <h3>Projets</h3>
-          <ul>
-            <li>
-              <a href="#">Item 1</a>
-            </li>
-            <li>
-              <a href="#">Item 2</a>
-            </li>
-            <li>
-              <a href="#">Item 3</a>
-            </li>
-            <li>
-              <a href="#">Item 4</a>
-            </li>
-          </ul>
-        </div>
-        <div class="block">
-          <h3>Acteurs</h3>
-          <ul>
-            <li>
-              <a href="#">Item 1</a>
-            </li>
-            <li>
-              <a href="#">Item 2</a>
-            </li>
-            <li>
-              <a href="#">Item 3</a>
-            </li>
-            <li>
-              <a href="#">Item 4</a>
-            </li>
-          </ul>
-        </div>
-        <div class="block">
-          <h3>Idées</h3>
-          <ul>
-            <li>
-              <a href="#">Item 1</a>
-            </li>
-            <li>
-              <a href="#">Item 2</a>
-            </li>
-            <li>
-              <a href="#">Item 3</a>
-            </li>
-            <li>
-              <a href="#">Item 4</a>
-            </li>
-          </ul>
-        </div>
-        <div class="block">
-          <h3>Ressources</h3>
-          <ul>
-            <li>
-              <a href="#">Item 1</a>
-            </li>
-            <li>
-              <a href="#">Item 2</a>
-            </li>
-            <li>
-              <a href="#">Item 3</a>
-            </li>
-            <li>
-              <a href="#">Item 4</a>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
 <footer>
-  2016 - Les Grands Voisins
+    2016 - Les Grands Voisins
 </footer>
 </body>
 </html>
