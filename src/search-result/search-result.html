@@ -1,19 +1,20 @@
 <dom-module id="search-result">
   <link rel="import" type="css" href="search-result.css">
   <template>
-    <a class="search-result-content" href="#">
-      <div id="image">
-        <img />
+    <a class="search-result-content row" href="#">
+      <div class="image col col-sm-2">
+        <img src="images/logo_les-grands-voisins.png" />
       </div>
-      <div id="info">
+      <div class="info col col-sm-10">
         <h2>[[title]]</h2>
-        <div>[[description]]</div>
+        <div class="description">[[description]]</div>
       </div>
-      <div class="clearfix"></div>
+      <div class="chevron glyphicon glyphicon-chevron-right"></div>
     </a>
+    <div class="clearfix"></div>
   </template>
   <script>
-    var SearchResult = Polymer({
+    Polymer({
       is: 'search-result',
       properties: {
         title: {
@@ -22,56 +23,5 @@
         }
       }
     });
-
-    log(new SearchResult());
-
-    /*
-     var helloDoc = document.currentScript.ownerDocument; // Ici, la variable document correspond au document de index.html. Avec helloDoc, on s'assure de bien accéder le document de hello-world.html
-
-     window.SearchResult = document.registerElement('search-result', {
-     prototype: Object.create(HTMLElement.prototype, {
-     title: {                 // optionnel si on n'a pas besoin de valeur par défaut
-     //value: "Title",        // valeur par défaut de l'attribut title
-     //writable: false,
-     //enumerable: true,
-     //configurable: true,
-     get: function () {
-     return this.getAttribute("title");
-     },
-     set: function (value) {
-     log(value + ' !!!');
-     }
-     },
-     description: {
-     value: "Description",
-     writable: true,
-     enumerable: true,
-     configurable: true
-     },
-     createdCallback: { // exécuté à chaque création d'un élément <hello-world>
-     value: function () {
-     var root = this.createShadowRoot();
-     var template = helloDoc.querySelector('#search-result'); // on cherche #template directement dans le DOM de hello-world.html
-     var clone = document.importNode(template.content, true);
-     var title = this.getAttribute("title");
-     this.clone = clone;
-     if (title != null && this.title != title) {
-     this.title = title;
-     }
-
-     this.fill(this.title, this.getAttribute("description"));
-
-     root.appendChild(clone);
-     }
-     },
-     fill: {
-     value: function (title, desc) {
-     log(this.clone);
-     this.clone.querySelector('#title').innerText = title;
-     this.clone.querySelector('#description').innerText = desc;
-     }
-     }
-     })
-     });*/
   </script>
 </dom-module>

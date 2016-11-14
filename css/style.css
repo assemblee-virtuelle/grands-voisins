@@ -9,7 +9,7 @@ a {
   color: #BB6600; }
 
 /* line 12, ../scss/style.scss */
-.nav-tabs, #searchResults, .detail {
+#searchResults, .detail {
   display: none; }
 
 /* line 18, ../scss/style.scss */
@@ -65,17 +65,21 @@ header {
     background: #FFCC00;
     border: 0; }
 
-/* line 72, ../scss/style.scss */
+/* line 71, ../scss/style.scss */
+.nav-tabs a {
+  color: #DDD; }
+
+/* line 76, ../scss/style.scss */
 #searchResults ul {
   padding: 0; }
-/* line 75, ../scss/style.scss */
+/* line 79, ../scss/style.scss */
 #searchResults li {
   list-style: none; }
-/* line 78, ../scss/style.scss */
+/* line 82, ../scss/style.scss */
 #searchResults p {
   text-align: justify; }
 
-/* line 88, ../scss/style.scss */
+/* line 92, ../scss/style.scss */
 footer {
   background-color: #F0F0F0;
   padding: 20px;
