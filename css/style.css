@@ -9,7 +9,7 @@ a {
   color: #BB6600; }
 
 /* line 12, ../scss/style.scss */
-#searchResults, .detail {
+#searchResults, #detail {
   display: none; }
 
 /* line 18, ../scss/style.scss */

@@ -1,4 +1,4 @@
-a, a:hover {
+a, a:hover, a:active {
   position: relative;
   text-decoration: none;
   color: #555;

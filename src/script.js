@@ -8,30 +8,59 @@
 
   var GVMap = class {
     constructor() {
+      window.gvc = this;
       // Load the first non semantic database.
       this.ajax({
         url: 'src/data.json', success: (e) => {
           this.data = JSON.parse(e.responseText);
           // Shortcuts.
-          this.searchTextInput = this.domId('searchText');
-          this.searchResults = this.domId('searchResults');
+          this.domSearchTextInput = this.domId('searchText');
+          this.domSearchResults = this.domId('searchResults');
+          this.domDetail = this.domId('detail');
           // Listeners.
           this.listen('searchForm', ['submit', 'keyup'], (e) => {
             e.preventDefault();
-            this.search(this.searchTextInput.value);
+            this.search(this.domSearchTextInput.value);
           });
-          this.searchTextInput.focus();
+          this.domSearchTextInput.focus();
           // TODO temp
           this.search('des');
         }
       });
     }
 
+    stateSet(stateName) {
+      if (this.stateCurrent !== stateName) {
+        let nameCapitalized = stateName.charAt(0).toUpperCase() + stateName.slice(1);
+        if (this.stateCurrent) {
+          let nameCurrentCapitalized = this.stateCurrent.charAt(0).toUpperCase() + this.stateCurrent.slice(1);
+          this['state' + nameCurrentCapitalized + 'Exit']();
+          this.stateCurrent = null;
+        }
+        this['state' + nameCapitalized + 'Init']();
+        this.stateCurrent = stateName;
+      }
+    }
+
+    /* -- Search -- */
+
+    stateSearchInit() {
+      // Empty content.
+      this.domSearchResults.innerHTML = '';
+      // Display zone.
+      this.domSearchResults.style.display = 'block';
+    }
+
+    stateSearchExit() {
+      // Set to default (hidden).
+      this.domSearchResults.style.display = 'none';
+    }
+
     search(term) {
       let results = [];
       let value;
 
-      this.searchResults.innerHTML = '';
+      this.stateSet('search');
 
       // This search method is temporary.
       // Iterates over items.
@@ -46,23 +75,39 @@
         }
       }
 
-      // Display results.
-      this.searchResults.style.display = 'block';
-
       for (let itemId in results) {
         let result = document.createElement('search-result');
         let data = this.data[itemId];
         result.title = data['Nom pour communication'];
         result.description = data['Activité'];
-        this.searchResults.appendChild(result);
+        result.id = itemId;
+        this.domSearchResults.appendChild(result);
       }
+    }
+
+    /* -- Detail -- */
+
+    stateDetailInit() {
+      // Display zone.
+      this.domDetail.style.display = 'block';
+    }
+
+    stateDetailExit() {
+      // Set to default (hidden).
+      this.domDetail.style.display = null;
+    }
+
+    detail(id) {
+      this.stateSet('detail');
+
+
     }
 
     listen(id, event, callback) {
       // Support list of events names.
       if (Array.isArray(event)) {
         for (let i in event) {
-          this.listen(id,event[i],callback);
+          this.listen(id, event[i], callback);
         }
         return;
       }

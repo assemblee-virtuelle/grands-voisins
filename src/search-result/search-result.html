@@ -1,9 +1,9 @@
 <dom-module id="search-result">
   <link rel="import" type="css" href="search-result.css">
   <template>
-    <a class="search-result-content row" href="#">
+    <a class="search-result-content row" href="#" rel="[[id]]">
       <div class="image col col-sm-2">
-        <img src="images/logo_les-grands-voisins.png" />
+        <img src="images/logo_les-grands-voisins.png"/>
       </div>
       <div class="info col col-sm-10">
         <h2>[[title]]</h2>
@@ -17,10 +17,16 @@
     Polymer({
       is: 'search-result',
       properties: {
-        title: {
-          type: String,
-          value: 'Title'
-        }
+        id: String,
+        title: String,
+        description: String
+      },
+      listeners: {
+        'click': 'selectCurrentResult'
+      },
+      selectCurrentResult: function (e) {
+        e.preventDefault();
+        window.gvc.detail(this.querySelector('.search-result-content').getAttribute('rel'));
       }
     });
   </script>
