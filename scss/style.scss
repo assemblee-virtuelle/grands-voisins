@@ -9,7 +9,7 @@ a {
 }
 
 // Default page element states.
-#searchResults, #detail {
+#searchTabs, #searchResults, #detail {
   display: none;
 }
 
@@ -69,7 +69,8 @@ header {
 }
 
 .nav-tabs a {
-  color:#DDD;
+  color: #DDD !important;
+  cursor: pointer !important;
 }
 
 #searchResults {

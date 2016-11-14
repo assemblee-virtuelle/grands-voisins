@@ -1,0 +1,146 @@
+<dom-module id="gv-detail">
+  <link rel="import" type="css" href="gv-detail.css">
+  <template>
+    <div id="detail">
+      <ul id="detailTools" class="nav nav-tabs">
+        <li role="presentation" class="active">
+          <a id="detailBack"
+             href="#"><span class="glyphicon glyphicon-chevron-left"></span>Retour</a>
+          </a>
+        </li>
+      </ul>
+      <div class="row">
+        <div class="col col-sm-8">
+          <h2>Acteur choisi</h2>
+                <span class="glyphicon glyphicon-edit">
+        </span>
+          <div class="detail-header row">
+            <div class="detail-header col col-sm-4">
+              <img src="">
+            </div>
+            <div class="detail-header col col-sm-8">
+
+            </div>
+          </div>
+          <div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum
+              non ipsum ut massa ultricies luctus a vel nunc. Ut ut arcu et
+              ante
+              ullamcorper mattis. Integer facilisis vestibulum orci, in
+              dapibus
+              enim
+              bibendum in. Nullam consequat dictum odio, ut gravida libero
+              mattis
+              ac. Donec at mauris vitae nisl dictum mattis eget suscipit
+              neque.
+              Curabitur tincidunt nulla odio, a lacinia ante ornare quis. Cras
+              efficitur quam ut nibh fermentum, sed pharetra nunc luctus.
+              Donec
+              luctus, erat eu aliquet rutrum, elit urna dictum enim, quis
+              mattis
+              lectus lorem at mauris. Nunc ut nibh sit amet est tincidunt
+              tincidunt
+              in in enim. Etiam vel felis mauris. In gravida urna eu libero
+              pellentesque, a venenatis leo ornare.</p>
+            <p>Phasellus feugiat in odio dignissim feugiat. Donec nec pulvinar
+              orci.
+              Etiam eros nisl, cursus tincidunt accumsan sit amet, consectetur
+              vel
+              odio. Class aptent taciti sociosqu ad litora torquent per
+              conubia
+              nostra, per inceptos himenaeos. Etiam mollis interdum dapibus.
+              Duis
+              tristique justo eget faucibus viverra. Maecenas iaculis metus at
+              eros
+              luctus semper. In urna urna, bibendum in malesuada vitae, ornare
+              in
+              purus. Sed pharetra ultrices malesuada.</p>
+          </div>
+        </div>
+        <div class="col col-sm-4">
+          <div class="block">
+            <h3>Projets</h3>
+            <ul>
+              <li>
+                <a href="#">Item 1</a>
+              </li>
+              <li>
+                <a href="#">Item 2</a>
+              </li>
+              <li>
+                <a href="#">Item 3</a>
+              </li>
+              <li>
+                <a href="#">Item 4</a>
+              </li>
+            </ul>
+          </div>
+          <div class="block">
+            <h3>Acteurs</h3>
+            <ul>
+              <li>
+                <a href="#">Item 1</a>
+              </li>
+              <li>
+                <a href="#">Item 2</a>
+              </li>
+              <li>
+                <a href="#">Item 3</a>
+              </li>
+              <li>
+                <a href="#">Item 4</a>
+              </li>
+            </ul>
+          </div>
+          <div class="block">
+            <h3>Idées</h3>
+            <ul>
+              <li>
+                <a href="#">Item 1</a>
+              </li>
+              <li>
+                <a href="#">Item 2</a>
+              </li>
+              <li>
+                <a href="#">Item 3</a>
+              </li>
+              <li>
+                <a href="#">Item 4</a>
+              </li>
+            </ul>
+          </div>
+          <div class="block">
+            <h3>Ressources</h3>
+            <ul>
+              <li>
+                <a href="#">Item 1</a>
+              </li>
+              <li>
+                <a href="#">Item 2</a>
+              </li>
+              <li>
+                <a href="#">Item 3</a>
+              </li>
+              <li>
+                <a href="#">Item 4</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'gv-detail',
+      backToResults: function (e) {
+        e.preventDefault();
+        window.gvc.stateSet('search');
+      },
+      ready: function () {
+        this.querySelector('#detailTools a').addEventListener('click', this.backToResults);
+      }
+    });
+  </script>
+</dom-module>

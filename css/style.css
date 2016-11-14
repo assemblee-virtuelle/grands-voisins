@@ -9,7 +9,7 @@ a {
   color: #BB6600; }
 
 /* line 12, ../scss/style.scss */
-#searchResults, #detail {
+#searchTabs, #searchResults, #detail {
   display: none; }
 
 /* line 18, ../scss/style.scss */
@@ -67,19 +67,20 @@ header {
 
 /* line 71, ../scss/style.scss */
 .nav-tabs a {
-  color: #DDD; }
+  color: #DDD !important;
+  cursor: pointer !important; }
 
-/* line 76, ../scss/style.scss */
+/* line 77, ../scss/style.scss */
 #searchResults ul {
   padding: 0; }
-/* line 79, ../scss/style.scss */
+/* line 80, ../scss/style.scss */
 #searchResults li {
   list-style: none; }
-/* line 82, ../scss/style.scss */
+/* line 83, ../scss/style.scss */
 #searchResults p {
   text-align: justify; }
 
-/* line 92, ../scss/style.scss */
+/* line 93, ../scss/style.scss */
 footer {
   background-color: #F0F0F0;
   padding: 20px;

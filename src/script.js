@@ -16,6 +16,7 @@
           // Shortcuts.
           this.domSearchTextInput = this.domId('searchText');
           this.domSearchResults = this.domId('searchResults');
+          this.domSearchTabs = this.domId('searchTabs');
           this.domDetail = this.domId('detail');
           // Listeners.
           this.listen('searchForm', ['submit', 'keyup'], (e) => {
@@ -23,8 +24,9 @@
             this.search(this.domSearchTextInput.value);
           });
           this.domSearchTextInput.focus();
+          this.stateSet('waiting');
           // TODO temp
-          this.search('des');
+          this.detail(7);
         }
       });
     }
@@ -37,23 +39,39 @@
           this['state' + nameCurrentCapitalized + 'Exit']();
           this.stateCurrent = null;
         }
-        this['state' + nameCapitalized + 'Init']();
-        this.stateCurrent = stateName;
+        // Callback should not return false if success.
+        if (this['state' + nameCapitalized + 'Init']() !== false) {
+          this.stateCurrent = stateName;
+        }
       }
+    }
+
+    /* -- Waiting --*/
+    stateWaitingInit() {
+
+    }
+
+    stateWaitingExit() {
+
     }
 
     /* -- Search -- */
 
     stateSearchInit() {
-      // Empty content.
-      this.domSearchResults.innerHTML = '';
+      if (!this.domSearchTextInput.value) {
+        this.stateSet('waiting');
+        // Block saving current state.
+        return false;
+      }
       // Display zone.
-      this.domSearchResults.style.display = 'block';
+      this.domSearchResults.style.display =
+        this.domSearchTabs.style.display = 'block';
     }
 
     stateSearchExit() {
       // Set to default (hidden).
-      this.domSearchResults.style.display = 'none';
+      this.domSearchResults.style.display =
+        this.domSearchTabs.style.display = 'none';
     }
 
     search(term) {
@@ -61,6 +79,9 @@
       let value;
 
       this.stateSet('search');
+
+      // Empty content.
+      this.domSearchResults.innerHTML = '';
 
       // This search method is temporary.
       // Iterates over items.
@@ -99,8 +120,6 @@
 
     detail(id) {
       this.stateSet('detail');
-
-
     }
 
     listen(id, event, callback) {
