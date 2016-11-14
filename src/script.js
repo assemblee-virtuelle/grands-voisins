@@ -16,7 +16,7 @@
           this.searchTextInput = this.domId('searchText');
           this.searchResults = this.domId('searchResults');
           // Listeners.
-          this.listen('searchForm', 'submit', (e) => {
+          this.listen('searchForm', ['submit', 'keyup'], (e) => {
             e.preventDefault();
             this.search(this.searchTextInput.value);
           });
@@ -59,6 +59,13 @@
     }
 
     listen(id, event, callback) {
+      // Support list of events names.
+      if (Array.isArray(event)) {
+        for (let i in event) {
+          this.listen(id,event[i],callback);
+        }
+        return;
+      }
       return this.domId(id).addEventListener(event, callback);
     }
 
