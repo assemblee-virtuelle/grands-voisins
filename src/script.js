@@ -83,13 +83,15 @@
       // Empty content.
       this.domSearchResults.innerHTML = '';
 
+      term = term.toLowerCase();
+
       // This search method is temporary.
       // Iterates over items.
       for (let itemId in this.data) {
         // Iterates over fields.
         for (let key in this.data[itemId]) {
           value = this.data[itemId][key];
-          if (value && value.indexOf && value.indexOf(term) !== -1) {
+          if (value && value.indexOf && value.toLowerCase().indexOf(term) !== -1) {
             // Use id as key to prevent duplicates.
             results[itemId] = itemId;
           }
@@ -120,6 +122,7 @@
 
     detail(id) {
       this.stateSet('detail');
+      window.gvcDetailComponent.render(id, this.data[id]);
     }
 
     listen(id, event, callback) {
