@@ -1,6 +1,7 @@
 (function ($) {
   'use strict';
 
+  // Devel
   window.log = (m) => {
     console.log(m);
   };
@@ -9,11 +10,11 @@
     constructor() {
       // Load the first non semantic database.
       this.ajax({
-        url: '../src/data.json', success: (e) => {
+        url: 'src/data.json', success: (e) => {
           this.data = JSON.parse(e.responseText);
-          log(this.data);
           // Shortcuts.
           this.searchTextInput = this.domId('searchText');
+          this.searchResults = this.domId('searchResults');
           // Listeners.
           this.listen('searchForm', 'submit', (e) => {
             e.preventDefault();
@@ -29,6 +30,9 @@
     search(term) {
       let results = [];
       let value;
+
+      this.searchResults.innerHTML = '';
+
       // This search method is temporary.
       // Iterates over items.
       for (let itemId in this.data) {
@@ -42,7 +46,16 @@
         }
       }
 
-      log(results);
+      // Display results.
+      this.searchResults.style.display = 'block';
+
+      for (let itemId in results) {
+        let result = document.createElement('search-result');
+        let data = this.data[itemId];
+        result.title = data['Nom pour communication'];
+        result.description = data['Activité'];
+        this.searchResults.appendChild(result);
+      }
     }
 
     listen(id, event, callback) {
@@ -101,7 +114,7 @@
     }
   };
 
-  $(function () {
+  window.addEventListener('load', function () {
     new GVMap();
   });
 }(jQuery));

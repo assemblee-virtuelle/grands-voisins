@@ -1,0 +1,36 @@
+a {
+  text-decoration: none;
+  color: #555;
+}
+
+h2 {
+  margin: 0;
+  padding: 20px 0 0 0;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.search-result-content {
+  margin-bottom: 20px;
+}
+
+#title {
+  color: green;
+}
+
+#image {
+  width: 70px;
+  background: red;
+  height: 70px;
+  float: left;
+  background: url('images/logo_les-grands-voisins.png') no-repeat center;
+  background-size: 100%;
+}
+
+#info {
+  padding: 0 0 0 90px;
+}
+
+.clearfix {
+  clear: both;
+}

@@ -9,7 +9,7 @@ a {
   color: #BB6600; }
 
 /* line 12, ../scss/style.scss */
-.nav-tabs, .search-results, .detail {
+.nav-tabs, #searchResults, .detail {
   display: none; }
 
 /* line 18, ../scss/style.scss */
@@ -66,13 +66,16 @@ header {
     border: 0; }
 
 /* line 72, ../scss/style.scss */
-.search-results li {
-  list-style: none; }
+#searchResults ul {
+  padding: 0; }
 /* line 75, ../scss/style.scss */
-.search-results p {
+#searchResults li {
+  list-style: none; }
+/* line 78, ../scss/style.scss */
+#searchResults p {
   text-align: justify; }
 
-/* line 85, ../scss/style.scss */
+/* line 88, ../scss/style.scss */
 footer {
   background-color: #F0F0F0;
   padding: 20px;

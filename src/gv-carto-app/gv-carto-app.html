@@ -1,0 +1,210 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="gv-carto-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <header>
+      <div class="container">
+        <h1>
+          <a>
+            <img alt="Les Grands Voisins - logo"
+                 src="images/logo_les-grands-voisins-white.png">
+            <span>[[title]]</span>
+          </a>
+        </h1>
+      </div>
+    </header>
+    <div id="gvMap">
+      <div class="mapContent"></div>
+    </div>
+    <div class="container">
+      <div class="search row">
+        <form id="searchForm">
+          <div class="col col-sm-10">
+            <input id="searchText" class="form-control" type="text"
+                   placeholder="Entrez ici un terme de recherche...">
+          </div>
+          <div class="col col-sm-2">
+            <input class="form-control btn btn-info" type="submit" value="Ok">
+          </div>
+        </form>
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active">
+            <a href="#">
+              <span class="glyphicon glyphicon-th-list"></span>Tout
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="#" class="">
+              <span class="glyphicon glyphicon-road"></span>
+              Projets
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="#">
+              <span class="glyphicon glyphicon-user"></span>
+              Acteurs
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="#">
+              <span class="glyphicon glyphicon-asterisk"></span>
+              Idées
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="#">
+              <span class="glyphicon glyphicon-tree-deciduous"></span>
+              Ressources
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div id="searchResults">
+      </div>
+
+      <div class="detail">
+        <div class="row">
+          <div class="col col-sm-8">
+            <h2>Acteur choisi</h2>
+                <span class="glyphicon glyphicon-edit">
+        </span>
+            <div class="detail-header row">
+              <div class="detail-header col col-sm-4">
+                <img src="">
+              </div>
+              <div class="detail-header col col-sm-8">
+
+              </div>
+            </div>
+            <div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Vestibulum
+                non ipsum ut massa ultricies luctus a vel nunc. Ut ut arcu et
+                ante
+                ullamcorper mattis. Integer facilisis vestibulum orci, in
+                dapibus
+                enim
+                bibendum in. Nullam consequat dictum odio, ut gravida libero
+                mattis
+                ac. Donec at mauris vitae nisl dictum mattis eget suscipit
+                neque.
+                Curabitur tincidunt nulla odio, a lacinia ante ornare quis. Cras
+                efficitur quam ut nibh fermentum, sed pharetra nunc luctus.
+                Donec
+                luctus, erat eu aliquet rutrum, elit urna dictum enim, quis
+                mattis
+                lectus lorem at mauris. Nunc ut nibh sit amet est tincidunt
+                tincidunt
+                in in enim. Etiam vel felis mauris. In gravida urna eu libero
+                pellentesque, a venenatis leo ornare.</p>
+              <p>Phasellus feugiat in odio dignissim feugiat. Donec nec pulvinar
+                orci.
+                Etiam eros nisl, cursus tincidunt accumsan sit amet, consectetur
+                vel
+                odio. Class aptent taciti sociosqu ad litora torquent per
+                conubia
+                nostra, per inceptos himenaeos. Etiam mollis interdum dapibus.
+                Duis
+                tristique justo eget faucibus viverra. Maecenas iaculis metus at
+                eros
+                luctus semper. In urna urna, bibendum in malesuada vitae, ornare
+                in
+                purus. Sed pharetra ultrices malesuada.</p>
+            </div>
+          </div>
+          <div class="col col-sm-4">
+            <div class="block">
+              <h3>Projets</h3>
+              <ul>
+                <li>
+                  <a href="#">Item 1</a>
+                </li>
+                <li>
+                  <a href="#">Item 2</a>
+                </li>
+                <li>
+                  <a href="#">Item 3</a>
+                </li>
+                <li>
+                  <a href="#">Item 4</a>
+                </li>
+              </ul>
+            </div>
+            <div class="block">
+              <h3>Acteurs</h3>
+              <ul>
+                <li>
+                  <a href="#">Item 1</a>
+                </li>
+                <li>
+                  <a href="#">Item 2</a>
+                </li>
+                <li>
+                  <a href="#">Item 3</a>
+                </li>
+                <li>
+                  <a href="#">Item 4</a>
+                </li>
+              </ul>
+            </div>
+            <div class="block">
+              <h3>Idées</h3>
+              <ul>
+                <li>
+                  <a href="#">Item 1</a>
+                </li>
+                <li>
+                  <a href="#">Item 2</a>
+                </li>
+                <li>
+                  <a href="#">Item 3</a>
+                </li>
+                <li>
+                  <a href="#">Item 4</a>
+                </li>
+              </ul>
+            </div>
+            <div class="block">
+              <h3>Ressources</h3>
+              <ul>
+                <li>
+                  <a href="#">Item 1</a>
+                </li>
+                <li>
+                  <a href="#">Item 2</a>
+                </li>
+                <li>
+                  <a href="#">Item 3</a>
+                </li>
+                <li>
+                  <a href="#">Item 4</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      2016 - Les Grands Voisins
+    </footer>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'gv-carto-app',
+      properties: {
+        title: {
+          type: String,
+          value: 'Les Grands Voisins'
+        }
+      }
+    });
+  </script>
+</dom-module>
