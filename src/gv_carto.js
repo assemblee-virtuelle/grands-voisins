@@ -41,6 +41,8 @@
           this.listen('searchForm', ['submit', 'keyup'], (e) => {
             e.preventDefault();
             this.search(this.domSearchTextInput.value, false);
+            // Save state into URL.
+            this.mainComponent.set('route.path', '/search/' + this.domSearchTextInput.value);
           });
           // Launch callbacks
           this.isReady = true;
@@ -119,9 +121,6 @@
           }
         }
       }
-
-      // Save state into URL.
-      this.mainComponent.set('route.path', '/search/' + term);
 
       for (let itemId in results) {
         let result = document.createElement('search-result');
