@@ -72,18 +72,21 @@ header {
 .nav-tabs a {
   color: #DDD !important;
   cursor: pointer !important; }
+  /* line 80, ../scss/style.scss */
+  .nav-tabs a span {
+    margin-right: 8px; }
 
-/* line 83, ../scss/style.scss */
+/* line 86, ../scss/style.scss */
 #searchResults ul {
   padding: 0; }
-/* line 86, ../scss/style.scss */
+/* line 89, ../scss/style.scss */
 #searchResults li {
   list-style: none; }
-/* line 89, ../scss/style.scss */
+/* line 92, ../scss/style.scss */
 #searchResults p {
   text-align: justify; }
 
-/* line 99, ../scss/style.scss */
+/* line 102, ../scss/style.scss */
 footer {
   margin-top: 80px;
   background-color: #F0F0F0;
