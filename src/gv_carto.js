@@ -11,6 +11,23 @@
     constructor(mainComponent) {
       window.gvc = this;
       this.mainComponent = mainComponent;
+      this.mapZones = {
+        "maisonDesMedecins": "Maison des médecins",
+        "lepage": "Lepage",
+        "pinard": "Pinard",
+        "lelong": "Lelong",
+        "pierrePetit": "Pierre Petit",
+        "laMediatheque": "La Médiathèque",
+        "ced": "CED",
+        "oratoire": "Oratoire",
+        "colombani": "Colombani",
+        "laLingerie": "La Lingerie",
+        "laChaufferie": "La Chaufferie",
+        "robin": "Robin",
+        "pasteur": "Pasteur",
+        "jalaguier": "Jalaguier",
+        "rapine": "Rapine"
+      };
       // Load the first non semantic database.
       this.ajax({
         url: '/src/data.json', success: (e) => {
@@ -190,8 +207,12 @@
       xhr.send(data);
     }
 
-    renderSearchResult(data) {
-
+    mapZoneGetKey(name) {
+      for (let i in this.mapZones) {
+        if (this.mapZones[i] === name) {
+          return i;
+        }
+      }
     }
   };
 

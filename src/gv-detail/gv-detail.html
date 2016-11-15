@@ -131,11 +131,11 @@
           observer: '_routeChanged'
         }
       },
-      _routeChanged: function (e) {
-        if (e.prefix === '/detail') {
-          // Don't know how to filter out this.
+      _routeChanged: function (data) {
+        // Don't know how to filter out this.
+        if (data.prefix === '/detail') {
           window.GVCarto.ready(function () {
-            this.refresh(e.path.slice(1));
+            this.refresh(data.path.slice(1));
           }.bind(this));
         }
       },
@@ -146,8 +146,15 @@
       ready: function () {
         window.gvcDetailComponent = this;
       },
+      displayMapZone: function (name, displayMode) {
+        document.getElementById('mapZone-' + window.gvc.mapZoneGetKey(name)).style.display = displayMode || 'block';
+      },
       refresh: function (id) {
         window.GVCarto.ready(function () {
+          // Hide current map zone.
+          if (this.building) {
+            this.displayMapZone(this.building, 'none');
+          }
           let i;
           let data = window.gvc.data[id];
           let filtered = {
@@ -169,6 +176,7 @@
           for (i in filtered) {
             this.set(i, filtered[i]);
           }
+          this.displayMapZone(filtered.building);
         }.bind(this));
       }
     });

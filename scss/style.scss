@@ -52,6 +52,9 @@ header {
     background-size: 100%;
     background-position: 50% 50%;
     box-shadow: inset 2px 1px 12px rgba(0, 0, 0, 0.2);
+    .mapZone {
+      display: none;
+    }
   }
 }
 
