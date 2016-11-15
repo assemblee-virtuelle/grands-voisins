@@ -2,39 +2,42 @@
   <link rel="import" type="css" href="search-results.css">
 
   <template>
-    <ul id="searchTabs" class="nav nav-tabs">
-      <li role="presentation" class="active">
-        <a href="#">
-          <span class="glyphicon glyphicon-th-list"></span>Tout
-        </a>
-      </li>
-      <!--<li role="presentation">-->
-      <!--<a href="#" class="">-->
-      <!--<span class="glyphicon glyphicon-road"></span>-->
-      <!--Projets-->
-      <!--</a>-->
-      <!--</li>-->
-      <!--<li role="presentation">-->
-      <!--<a href="#">-->
-      <!--<span class="glyphicon glyphicon-user"></span>-->
-      <!--Acteurs-->
-      <!--</a>-->
-      <!--</li>-->
-      <!--<li role="presentation">-->
-      <!--<a href="#">-->
-      <!--<span class="glyphicon glyphicon-asterisk"></span>-->
-      <!--Idées-->
-      <!--</a>-->
-      <!--</li>-->
-      <!--<li role="presentation">-->
-      <!--<a href="#">-->
-      <!--<span class="glyphicon glyphicon-tree-deciduous"></span>-->
-      <!--Ressources-->
-      <!--</a>-->
-      <!--</li>-->
-    </ul>
-
-    <div id="searchResults"></div>
+    <div class="row">
+    <div class="col col-sm-12">
+      <ul id="searchTabs" class="nav nav-tabs">
+        <li role="presentation" class="active">
+          <a href="#">
+            <span class="glyphicon glyphicon-th-list"></span>Tout
+          </a>
+        </li>
+        <!--<li role="presentation">-->
+        <!--<a href="#" class="">-->
+        <!--<span class="glyphicon glyphicon-road"></span>-->
+        <!--Projets-->
+        <!--</a>-->
+        <!--</li>-->
+        <!--<li role="presentation">-->
+        <!--<a href="#">-->
+        <!--<span class="glyphicon glyphicon-user"></span>-->
+        <!--Acteurs-->
+        <!--</a>-->
+        <!--</li>-->
+        <!--<li role="presentation">-->
+        <!--<a href="#">-->
+        <!--<span class="glyphicon glyphicon-asterisk"></span>-->
+        <!--Idées-->
+        <!--</a>-->
+        <!--</li>-->
+        <!--<li role="presentation">-->
+        <!--<a href="#">-->
+        <!--<span class="glyphicon glyphicon-tree-deciduous"></span>-->
+        <!--Ressources-->
+        <!--</a>-->
+        <!--</li>-->
+      </ul>
+    </div>
+    </div>
+    <div id="searchResults" class="col col-sm-12"></div>
   </template>
   <script>
     Polymer({

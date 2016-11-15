@@ -44,14 +44,8 @@ header {
 }
 
 #gvMap {
-  background: #F0F0F0;
-  height: 60vw;
+
   .mapContent {
-    background: url("../images/map.jpg");
-    height: 100%;
-    background-size: 100%;
-    background-position: 50% 50%;
-    box-shadow: inset 2px 1px 12px rgba(0, 0, 0, 0.2);
     .mapZone {
       display: none;
     }
@@ -59,7 +53,8 @@ header {
 }
 
 .search {
-  margin: 10px 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
   .nav {
     margin: 0 15px;
     li {

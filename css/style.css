@@ -42,58 +42,48 @@ header {
       color: #CCC;
       display: none; }
 
-/* line 46, ../scss/style.scss */
-#gvMap {
-  background: #F0F0F0;
-  height: 60vw; }
-  /* line 49, ../scss/style.scss */
-  #gvMap .mapContent {
-    background: url("../images/map.jpg");
-    height: 100%;
-    background-size: 100%;
-    background-position: 50% 50%;
-    box-shadow: inset 2px 1px 12px rgba(0, 0, 0, 0.2); }
-    /* line 55, ../scss/style.scss */
-    #gvMap .mapContent .mapZone {
-      display: none; }
+/* line 49, ../scss/style.scss */
+#gvMap .mapContent .mapZone {
+  display: none; }
 
-/* line 61, ../scss/style.scss */
+/* line 55, ../scss/style.scss */
 .search {
-  margin: 10px 0; }
-  /* line 63, ../scss/style.scss */
+  margin-top: 10px;
+  margin-bottom: 10px; }
+  /* line 58, ../scss/style.scss */
   .search .nav {
     margin: 0 15px; }
-    /* line 65, ../scss/style.scss */
+    /* line 60, ../scss/style.scss */
     .search .nav li {
       margin-top: 10px; }
-      /* line 67, ../scss/style.scss */
+      /* line 62, ../scss/style.scss */
       .search .nav li a {
         padding-left: 15px; }
-        /* line 69, ../scss/style.scss */
+        /* line 64, ../scss/style.scss */
         .search .nav li a span {
           margin-left: 0;
           margin-right: 8px; }
-  /* line 76, ../scss/style.scss */
+  /* line 71, ../scss/style.scss */
   .search input[type=submit] {
     background: #FFCC00;
     border: 0; }
 
-/* line 82, ../scss/style.scss */
+/* line 77, ../scss/style.scss */
 .nav-tabs a {
   color: #DDD !important;
   cursor: pointer !important; }
 
-/* line 88, ../scss/style.scss */
+/* line 83, ../scss/style.scss */
 #searchResults ul {
   padding: 0; }
-/* line 91, ../scss/style.scss */
+/* line 86, ../scss/style.scss */
 #searchResults li {
   list-style: none; }
-/* line 94, ../scss/style.scss */
+/* line 89, ../scss/style.scss */
 #searchResults p {
   text-align: justify; }
 
-/* line 104, ../scss/style.scss */
+/* line 99, ../scss/style.scss */
 footer {
   margin-top: 80px;
   background-color: #F0F0F0;
