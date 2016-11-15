@@ -4,7 +4,8 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
     "app-route": "PolymerElements/app-route#^0.9.3",
-    "iron-pages": "PolymerElements/iron-pages#^1.0.8"
+    "iron-pages": "PolymerElements/iron-pages#^1.0.8",
+    "page-title": "zacharytamas/page-title#^1.2.1"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
