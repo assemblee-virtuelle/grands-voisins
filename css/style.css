@@ -8,7 +8,11 @@ body {
 a {
   color: #BB6600; }
 
-/* line 13, ../scss/style.scss */
+/* line 11, ../scss/style.scss */
+a:hover {
+  color: #FFCC00; }
+
+/* line 17, ../scss/style.scss */
 header {
   animation: headerFadeIn 0.5s cubic-bezier(0, 0.6, 0.4, 1) forwards;
   background-color: #FFCC00;
@@ -24,25 +28,25 @@ header {
     top: -200px; }
   100% {
     top: 10px; } }
-  /* line 27, ../scss/style.scss */
+  /* line 31, ../scss/style.scss */
   header h1 {
     font-size: 16px;
     font-weight: bold;
     margin: 0; }
-    /* line 31, ../scss/style.scss */
+    /* line 35, ../scss/style.scss */
     header h1 img {
       width: 80px;
       margin: 10px; }
-    /* line 35, ../scss/style.scss */
+    /* line 39, ../scss/style.scss */
     header h1 span {
       color: #CCC;
       display: none; }
 
-/* line 42, ../scss/style.scss */
+/* line 46, ../scss/style.scss */
 #gvMap {
   background: #F0F0F0;
   height: 60vw; }
-  /* line 45, ../scss/style.scss */
+  /* line 49, ../scss/style.scss */
   #gvMap .mapContent {
     background: url("../images/map.jpg");
     height: 100%;
@@ -50,43 +54,43 @@ header {
     background-position: 50% 50%;
     box-shadow: inset 2px 1px 12px rgba(0, 0, 0, 0.2); }
 
-/* line 54, ../scss/style.scss */
+/* line 58, ../scss/style.scss */
 .search {
   margin: 10px 0; }
-  /* line 56, ../scss/style.scss */
+  /* line 60, ../scss/style.scss */
   .search .nav {
     margin: 0 15px; }
-    /* line 58, ../scss/style.scss */
+    /* line 62, ../scss/style.scss */
     .search .nav li {
       margin-top: 10px; }
-      /* line 60, ../scss/style.scss */
+      /* line 64, ../scss/style.scss */
       .search .nav li a {
         padding-left: 15px; }
-        /* line 62, ../scss/style.scss */
+        /* line 66, ../scss/style.scss */
         .search .nav li a span {
           margin-left: 0;
           margin-right: 8px; }
-  /* line 69, ../scss/style.scss */
+  /* line 73, ../scss/style.scss */
   .search input[type=submit] {
     background: #FFCC00;
     border: 0; }
 
-/* line 75, ../scss/style.scss */
+/* line 79, ../scss/style.scss */
 .nav-tabs a {
   color: #DDD !important;
   cursor: pointer !important; }
 
-/* line 81, ../scss/style.scss */
+/* line 85, ../scss/style.scss */
 #searchResults ul {
   padding: 0; }
-/* line 84, ../scss/style.scss */
+/* line 88, ../scss/style.scss */
 #searchResults li {
   list-style: none; }
-/* line 87, ../scss/style.scss */
+/* line 91, ../scss/style.scss */
 #searchResults p {
   text-align: justify; }
 
-/* line 97, ../scss/style.scss */
+/* line 101, ../scss/style.scss */
 footer {
   margin-top: 80px;
   background-color: #F0F0F0;
