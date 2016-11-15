@@ -1,11 +1,14 @@
 <dom-module id="gv-detail">
   <link rel="import" type="css" href="gv-detail.css">
   <template>
+    <app-route route="{{route}}" pattern="/:user_id"
+               data="{{routeData}}"></app-route>
+
     <div id="detail">
       <ul id="detailTools" class="nav nav-tabs">
         <li role="presentation" class="active">
           <a id="detailBack"
-             href="#"><span class="glyphicon glyphicon-chevron-left"></span>Retour</a>
+             href="javascript:history.back();"><span class="glyphicon glyphicon-chevron-left"></span>Retour</a>
         </li>
         <li role="presentation" class="active">
           <a id="detailEdit"
@@ -18,7 +21,8 @@
           <h2>[[title]]</h2>
           <div class="detail-header row">
             <div class="detail-header col col-sm-4">
-              <img class="illustration" src="images/logo_les-grands-voisins.png">
+              <img class="illustration"
+                   src="images/logo_les-grands-voisins.png">
             </div>
             <div class="detail-header col col-sm-8">
               <table class="detailInfo">
@@ -149,34 +153,50 @@
         id: String,
         title: String,
         description: String,
+        route: {
+          type: Object,
+          observer: '_routeChanged'
+        }
+      },
+      _routeChanged: function (e) {
+        if (e.prefix === '/detail') {
+          // Don't know how to filter out this.
+          window.GVCarto.ready(function () {
+            this.refresh(e.path.slice(1));
+          }.bind(this));
+        }
       },
       backToResults: function (e) {
         e.preventDefault();
         window.gvc.stateSet('search');
       },
       ready: function () {
-        // Listen for back button.
-        this.querySelector('#detailTools a').addEventListener('click', this.backToResults);
-        //
         window.gvcDetailComponent = this;
       },
-      render: function (id, data) {
-        Object.assign(this, {
-          id: id,
-          title: data['Nom pour communication'],
-          description: data['Activité'] + data['Contribution au projet proposée'],
-          status: data['SUIVI'],
-          type: data['Structure juridique signature convention'],
-          email: data['Adresse e-mail'],
-          email2: data['Adresse e-mail 2'],
-          phone: data['Numéro contact'],
-          phone2: data['Numéro contact 2'],
-          contact: data['Prénom interlocuteur référent'] + ' ' + data['Nom interlocuteur référent'],
-          building: data['Bâtiment'],
-          facebook: data['Page Facebook'],
-          twitter: data['Compte twitter'],
-          url: data['Site Web']
-        });
+      refresh: function (id) {
+        window.GVCarto.ready(function () {
+          let i;
+          let data = window.gvc.data[id];
+          let filtered = {
+            id: id,
+            title: data['Nom pour communication'],
+            description: data['Activité'] + ' ' + data['Contribution au projet proposée'],
+            status: data['SUIVI'],
+            type: data['Structure juridique signature convention'],
+            email: data['Adresse e-mail'],
+            email2: data['Adresse e-mail 2'],
+            phone: data['Numéro contact'],
+            phone2: data['Numéro contact 2'],
+            contact: data['Prénom interlocuteur référent'] + ' ' + data['Nom interlocuteur référent'],
+            building: data['Bâtiment'],
+            facebook: data['Page Facebook'],
+            twitter: data['Compte twitter'],
+            url: data['Site Web']
+          };
+          for (i in filtered) {
+            this.set(i, filtered[i]);
+          }
+        }.bind(this));
       }
     });
   </script>

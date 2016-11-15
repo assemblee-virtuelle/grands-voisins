@@ -1,17 +1,19 @@
-(function ($) {
+(function () {
   'use strict';
-
   // Devel
   window.log = (m) => {
     console.log(m);
   };
 
-  var GVMap = class {
-    constructor() {
+  var readyCallbacks = [];
+
+  window.GVCarto = class {
+    constructor(mainComponent) {
       window.gvc = this;
+      this.mainComponent = mainComponent;
       // Load the first non semantic database.
       this.ajax({
-        url: 'src/data.json', success: (e) => {
+        url: '/src/data.json', success: (e) => {
           this.data = JSON.parse(e.responseText);
           // Shortcuts.
           this.domSearchTextInput = this.domId('searchText');
@@ -21,12 +23,15 @@
           // Listeners.
           this.listen('searchForm', ['submit', 'keyup'], (e) => {
             e.preventDefault();
-            this.search(this.domSearchTextInput.value);
+            this.search(this.domSearchTextInput.value, false);
           });
-          this.domSearchTextInput.focus();
+          // Launch callbacks
+          this.isReady = true;
+          //this.domSearchTextInput.focus();
           this.stateSet('waiting');
-          // TODO temp
-          this.detail(7);
+          for (let i in readyCallbacks) {
+            readyCallbacks[i]();
+          }
         }
       });
     }
@@ -63,22 +68,22 @@
         // Block saving current state.
         return false;
       }
-      // Display zone.
-      this.domSearchResults.style.display =
-        this.domSearchTabs.style.display = 'block';
     }
 
     stateSearchExit() {
-      // Set to default (hidden).
-      this.domSearchResults.style.display =
-        this.domSearchTabs.style.display = 'none';
+
     }
 
-    search(term) {
+    search(term, updateSearchField = true) {
       let results = [];
       let value;
 
       this.stateSet('search');
+
+      // Set value to input (used at first page load)
+      if (updateSearchField) {
+        this.domSearchTextInput.value = term;
+      }
 
       // Empty content.
       this.domSearchResults.innerHTML = '';
@@ -97,6 +102,9 @@
           }
         }
       }
+
+      // Save state into URL.
+      this.mainComponent.set('route.path', '/search/' + term);
 
       for (let itemId in results) {
         let result = document.createElement('search-result');
@@ -122,7 +130,6 @@
 
     detail(id) {
       this.stateSet('detail');
-      window.gvcDetailComponent.render(id, this.data[id]);
     }
 
     listen(id, event, callback) {
@@ -188,7 +195,12 @@
     }
   };
 
-  window.addEventListener('load', function () {
-    new GVMap();
-  });
-}(jQuery));
+  window.GVCarto.ready = function (callback) {
+    if (!window.gvc || !window.gvc.isReady) {
+      readyCallbacks.push(callback);
+    }
+    else {
+      callback();
+    }
+  };
+}());

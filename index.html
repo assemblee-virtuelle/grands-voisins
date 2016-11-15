@@ -5,20 +5,21 @@
   <meta name="viewport"
         content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
   <title>Les Grands Voisins - Cartographie</title>
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <link type="text/css" rel="stylesheet"
-        href="node_modules/bootstrap/dist/css/bootstrap.css">
+        href="/node_modules/bootstrap/dist/css/bootstrap.css">
   <link type="text/css" rel="stylesheet"
-        href="css/style.css">
+        href="/css/style.css">
   <link type="text/css" rel="stylesheet"
-        href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+        href="/node_modules/bootstrap/dist/css/bootstrap-theme.css">
   <!-- <script src="dist/script.min.js"></script> -->
-  <script src="src/script.js"></script>
+  <script src="/src/gv_carto.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Varela+Round"
         rel="stylesheet">
 
-  <meta name="description" content="Cartographie des acteurs du site des Grands Voisins à l'Hôpital Saint Vincent de Paul, Paris">
+  <meta name="description"
+        content="Cartographie des acteurs du site des Grands Voisins à l'Hôpital Saint Vincent de Paul, Paris">
 
   <!-- See https://goo.gl/OOhYW5 -->
   <link rel="manifest" href="/manifest.json">
@@ -36,11 +37,99 @@
         content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Les Grands Voisins">
 
+  <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+  <link rel="import" href="/bower_components/polymer/polymer.html">
+  <link rel="import" href="/bower_components/app-route/app-location.html">
+  <link rel="import" href="/bower_components/app-route/app-route.html">
+  <link rel="import" href="/bower_components/iron-pages/iron-pages.html">
+
   <!-- components -->
-  <link rel="import" href="/src/gv-carto-app/gv-carto-app.html">
-  <link rel="import" href="src/search-result/search-result.html">
+  <link rel="import" href="/src/search-result/search-result.html">
+
+  <link rel="import" href="/src/gv-detail/gv-detail.html">
+  <link rel="import" href="/src/search-results/search-results.html">
 </head>
 <body>
+
 <gv-carto-app></gv-carto-app>
+
+<dom-module id="gv-carto-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <header>
+      <div class="container">
+        <h1>
+          <a href="/">
+            <img alt="Les Grands Voisins - logo"
+                 src="/images/logo_les-grands-voisins-white.png">
+            <span>[[title]]</span>
+          </a>
+        </h1>
+      </div>
+    </header>
+    <div id="gvMap">
+      <div class="mapContent"></div>
+    </div>
+    <div class="container">
+      <div class="search row">
+        <form id="searchForm">
+          <div class="col col-sm-10">
+            <input id="searchText" class="form-control" type="text"
+                   placeholder="Entrez ici un terme de recherche...">
+          </div>
+          <div class="col col-sm-2">
+            <input class="form-control btn btn-info" type="submit" value="Ok">
+          </div>
+        </form>
+      </div>
+
+      <!-- app-location binds with the URL and produces a route for
+      app-route elements to consume. Since this demo needs to run without
+      server cooperation (e.g. with polyserve, in the elements catalog, etc) we'll
+      use the hash portion of the URL for our route paths. -->
+      <app-location route='{{route}}'></app-location>
+
+      <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{searchTail}}"></app-route>
+
+      <iron-pages selected="[[routeData.page]]" attr-for-selected="name">
+        <search-results name="search" route="{{searchTail}}"></search-results>
+        <gv-detail name="detail" route="{{searchTail}}"></gv-detail>
+      </iron-pages>
+
+    </div>
+    <footer>
+      2016 - Les Grands Voisins
+    </footer>
+  </template>
+</dom-module>
+
+<script>
+  window.addEventListener('WebComponentsReady', function () {
+    Polymer({
+      is: 'gv-carto-app',
+
+      properties: {
+        title: {
+          type: String,
+          value: 'Les Grands Voisins'
+        },
+        searchTail: {
+          type: Object,
+          notify: true
+        }
+      },
+
+      ready: function () {
+        new window.GVCarto(this);
+      }
+    });
+  });
+</script>
 </body>
 </html>

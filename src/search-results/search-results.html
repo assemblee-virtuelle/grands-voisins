@@ -1,0 +1,58 @@
+<dom-module id="search-results">
+  <link rel="import" type="css" href="search-results.css">
+
+  <template>
+    <ul id="searchTabs" class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <a href="#">
+          <span class="glyphicon glyphicon-th-list"></span>Tout
+        </a>
+      </li>
+      <!--<li role="presentation">-->
+      <!--<a href="#" class="">-->
+      <!--<span class="glyphicon glyphicon-road"></span>-->
+      <!--Projets-->
+      <!--</a>-->
+      <!--</li>-->
+      <!--<li role="presentation">-->
+      <!--<a href="#">-->
+      <!--<span class="glyphicon glyphicon-user"></span>-->
+      <!--Acteurs-->
+      <!--</a>-->
+      <!--</li>-->
+      <!--<li role="presentation">-->
+      <!--<a href="#">-->
+      <!--<span class="glyphicon glyphicon-asterisk"></span>-->
+      <!--Idées-->
+      <!--</a>-->
+      <!--</li>-->
+      <!--<li role="presentation">-->
+      <!--<a href="#">-->
+      <!--<span class="glyphicon glyphicon-tree-deciduous"></span>-->
+      <!--Ressources-->
+      <!--</a>-->
+      <!--</li>-->
+    </ul>
+
+    <div id="searchResults"></div>
+  </template>
+  <script>
+    Polymer({
+      is: 'search-results',
+      properties: {
+        route: {
+          type: Object,
+          observer: '_routeChanged'
+        }
+      },
+
+      _routeChanged: function (data) {
+        if (data.prefix === '/search') {
+          window.GVCarto.ready(function () {
+            window.gvc.search(data.path.slice(1));
+          }.bind(this));
+        }
+      }
+    });
+  </script>
+</dom-module>
