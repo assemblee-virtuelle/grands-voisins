@@ -138,6 +138,10 @@
             this.refresh(data.path.slice(1));
           }.bind(this));
         }
+        else {
+          // Hide all maps.
+          this.clearMapZone();
+        }
       },
       backToResults: function (e) {
         e.preventDefault();
@@ -149,12 +153,16 @@
       displayMapZone: function (name, displayMode) {
         document.getElementById('mapZone-' + window.gvc.mapZoneGetKey(name)).style.display = displayMode || 'block';
       },
+      clearMapZone: function () {
+        // Hide current map zone.
+        if (this.building) {
+          this.displayMapZone(this.building, 'none');
+        }
+      },
       refresh: function (id) {
+
         window.GVCarto.ready(function () {
-          // Hide current map zone.
-          if (this.building) {
-            this.displayMapZone(this.building, 'none');
-          }
+          this.clearMapZone();
           let i;
           let data = window.gvc.data[id];
           let filtered = {
