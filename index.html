@@ -63,15 +63,13 @@
     </style>
 
     <header>
-      <div class="container">
-        <h1>
-          <a href="/">
-            <img alt="Les Grands Voisins - logo"
-                 src="/images/logo_les-grands-voisins-white.png">
-            <span>[[title]]</span>
-          </a>
-        </h1>
-      </div>
+      <h1>
+        <a href="/">
+          <img alt="Les Grands Voisins - logo"
+               src="/images/logo_les-grands-voisins-white.png">
+          <span>[[title]]</span>
+        </a>
+      </h1>
     </header>
     <div id="gvMap">
       <div class="mapContent"></div>
@@ -95,7 +93,8 @@
       use the hash portion of the URL for our route paths. -->
       <app-location route='{{route}}'></app-location>
 
-      <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{searchTail}}"></app-route>
+      <app-route route="{{route}}" pattern="/:page/" data="{{routeData}}"
+                 tail="{{searchTail}}"></app-route>
 
       <iron-pages selected="[[routeData.page]]" attr-for-selected="name">
         <search-results name="search" route="{{searchTail}}"></search-results>
