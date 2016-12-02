@@ -10,6 +10,7 @@
   window.GVCarto = class {
     constructor(mainComponent) {
       window.gvc = this;
+      this.sfBaseUrl = 'http://163.172.179.125:9112';
       this.mainComponent = mainComponent;
       this.mapZones = {
         "maisonDesMedecins": "Maison des médecins",
@@ -38,7 +39,7 @@
           this.domSearchTabs = this.domId('searchTabs');
           this.domDetail = this.domId('detail');
           // Listeners.
-          this.listen('searchForm', ['submit', 'keyup'], (e) => {
+          this.listen('searchForm', ['submit'/*, 'keyup'*/], (e) => {
             e.preventDefault();
             this.search(this.domSearchTextInput.value, false);
             // Save state into URL.
@@ -46,13 +47,51 @@
           });
           // Launch callbacks
           this.isReady = true;
-          //this.domSearchTextInput.focus();
+          // Init custom auto complete.
+          $(this.domSearchTextInput).typeahead({
+            //source: ['romain','weeger'],
+            source: this.searchTypeHead.bind(this),
+            matcher: function() {
+              // Return always true, SF lookup is in charge of filtering results.
+              return true;
+            }
+          });
+          // Set focus.
+          this.domSearchTextInput.focus();
           this.stateSet('waiting');
           for (let i in readyCallbacks) {
             readyCallbacks[i]();
           }
         }
       });
+    }
+
+    searchTypeHead(query, process) {
+      // A query has been launched.
+      if (this.searchTypeHeadInterval) {
+        // Abandon it.
+        window.clearTimeout(this.searchTypeHeadInterval);
+        delete this.searchTypeHeadInterval;
+      }
+      // Avoid too much queries.
+      this.searchTypeHeadInterval = window.setTimeout(() => {
+        log('Search ... ' + query);
+        $.ajax({
+          url: this.sfBaseUrl + '/lookup?q=*' + query + '*',
+          success: (data) => {
+            data = JSON.parse(data);
+            for (var filtered = [], item, i = 0; item = data[i++];) {
+              filtered.push({
+                "id": item.URI,
+                "name": item.Label
+              });
+            }
+            log(filtered);
+            process(filtered);
+          }
+        }, 'json');
+      }, 500);
+
     }
 
     stateSet(stateName) {
@@ -96,6 +135,20 @@
     search(term, updateSearchField = true) {
       let results = [];
       let value;
+
+      if (true) {
+        this.ajax({
+          headers: {
+            Accept: "application/ld+json; charset=utf-8",
+            "Content-Type": "application/ld+json; charset=utf-8"
+          },
+          url: 'http://163.172.179.125:9112/lookup?q=' + encodeURIComponent(term),
+          success: function (a) {
+            console.log(a);
+          }
+        });
+        return;
+      }
 
       this.stateSet('search');
 
