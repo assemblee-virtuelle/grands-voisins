@@ -22,13 +22,14 @@ header {
   background-color: #FFCC00;
   padding: 1.5px 20px;
   top: 10px;
-  left: 10px; }
+  left: 10px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3); }
 @keyframes headerFadeIn {
   0% {
     top: -200px; }
   100% {
     top: 10px; } }
-  /* line 31, ../scss/style.scss */
+  /* line 32, ../scss/style.scss */
   header .logo-circle {
     position: absolute;
     background: #FFCC00;
@@ -38,85 +39,91 @@ header {
     height: 110px;
     padding: 12px 10px;
     top: -27px; }
-    /* line 40, ../scss/style.scss */
+    /* line 41, ../scss/style.scss */
     header .logo-circle img {
       width: 80px; }
-    /* line 43, ../scss/style.scss */
+    /* line 44, ../scss/style.scss */
     header .logo-circle h1 {
       display: none; }
-  /* line 48, ../scss/style.scss */
+  /* line 49, ../scss/style.scss */
   header .search {
     margin-top: 10px;
     margin-bottom: 10px; }
-    /* line 51, ../scss/style.scss */
+    /* line 52, ../scss/style.scss */
     header .search .nav {
       margin: 0 15px; }
-      /* line 53, ../scss/style.scss */
+      /* line 54, ../scss/style.scss */
       header .search .nav li {
         margin-top: 10px; }
-        /* line 55, ../scss/style.scss */
+        /* line 56, ../scss/style.scss */
         header .search .nav li a {
           padding-left: 15px; }
-          /* line 57, ../scss/style.scss */
+          /* line 58, ../scss/style.scss */
           header .search .nav li a span {
             margin-left: 0;
             margin-right: 8px; }
-    /* line 64, ../scss/style.scss */
+    /* line 65, ../scss/style.scss */
     header .search input[type=submit] {
       background: #333;
       border: 0;
       color: rgba(183, 154, 118, 0.95); }
-    /* line 69, ../scss/style.scss */
+    /* line 70, ../scss/style.scss */
     header .search input[type=submit]:hover {
       background: #fff192; }
   @media (max-width: 750px) {
-    /* line 75, ../scss/style.scss */
+    /* line 76, ../scss/style.scss */
     header .logo-circle {
       position: initial;
       width: auto;
       padding: 10px;
       height: auto;
       top: 0; }
-      /* line 81, ../scss/style.scss */
+      /* line 82, ../scss/style.scss */
       header .logo-circle img {
         width: auto; }
-    /* line 85, ../scss/style.scss */
+    /* line 86, ../scss/style.scss */
     header .col-search-logo {
       margin: -55px 0; }
-    /* line 88, ../scss/style.scss */
+    /* line 89, ../scss/style.scss */
     header .col-search-button {
       margin-top: 10px; } }
 
-/* line 96, ../scss/style.scss */
+/* line 97, ../scss/style.scss */
 #gvMap .mapContent .mapZone {
   display: none; }
+/* line 100, ../scss/style.scss */
+#gvMap .mapContent .gvMapInner {
+  border: 20px solid #F0F0F0;
+  transform: rotate(-1deg);
+  max-width: 100vh;
+  margin: 20px auto; }
 
-/* line 102, ../scss/style.scss */
+/* line 109, ../scss/style.scss */
 .nav-tabs a {
   color: #DDD !important;
   cursor: pointer !important; }
-  /* line 105, ../scss/style.scss */
+  /* line 112, ../scss/style.scss */
   .nav-tabs a span {
     margin-right: 8px; }
 
-/* line 111, ../scss/style.scss */
+/* line 118, ../scss/style.scss */
 #searchResults ul {
   padding: 0; }
-/* line 114, ../scss/style.scss */
+/* line 121, ../scss/style.scss */
 #searchResults li {
   list-style: none; }
-/* line 117, ../scss/style.scss */
+/* line 124, ../scss/style.scss */
 #searchResults p {
   text-align: justify; }
 
-/* line 127, ../scss/style.scss */
+/* line 134, ../scss/style.scss */
 footer {
   margin-top: 80px;
   background-color: #F0F0F0;
   padding: 20px;
   text-align: center; }
 
-/* line 134, ../scss/style.scss */
+/* line 141, ../scss/style.scss */
 body.dev-env #gv-logo-inner {
   animation-delay: 0s;
   display: none; }

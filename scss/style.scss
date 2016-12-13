@@ -28,6 +28,7 @@ header {
   padding: 1.5px 20px;
   top: 10px;
   left: 10px;
+  box-shadow: $shadow_min;
   .logo-circle {
     position: absolute;
     background: #FFCC00;
@@ -95,6 +96,12 @@ header {
   .mapContent {
     .mapZone {
       display: none;
+    }
+    .gvMapInner {
+      border: 20px solid #F0F0F0;
+      transform: rotate(-1deg);
+      max-width: 100vh;
+      margin:20px auto;
     }
   }
 }
