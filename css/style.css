@@ -89,9 +89,6 @@ header {
     header .col-search-building {
       margin-top: 10px; } }
 
-/* line 98, ../scss/style.scss */
-#gvMap .mapContent .mapZone {
-  display: none; }
 /* line 101, ../scss/style.scss */
 #gvMap .mapContent .gvMapInner {
   border: 8px dashed #F0F0F0;
