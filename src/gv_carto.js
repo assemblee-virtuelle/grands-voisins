@@ -11,7 +11,7 @@
     constructor(mainComponent) {
       window.gvc = this;
       this.mainComponent = mainComponent;
-      this.mapZones = {
+      this.buildings = {
         "maisonDesMedecins": "Maison des médecins",
         "lepage": "Lepage",
         "pinard": "Pinard",
@@ -29,6 +29,15 @@
         "rapine": "Rapine"
       };
 
+      var final = [];
+      for (let i in this.buildings) {
+        final.push({
+          key: i,
+          name: this.buildings[i]
+        });
+      }
+      this.mainComponent.buildings = final;
+
       // Special class for dev env.
       if (window.location.hostname === '127.0.0.1') {
         window.document.body.classList.add('dev-env');
@@ -42,13 +51,11 @@
           this.domSearchResults = this.domId('searchResults');
           this.domSearchTabs = this.domId('searchTabs');
           this.domDetail = this.domId('detail');
+          this.domSearchSelectBuilding = this.domId('searchSelectBuilding');
           // Listeners.
-          this.listen('searchForm', ['submit', 'keyup'], (e) => {
-            e.preventDefault();
-            this.search(this.domSearchTextInput.value, false);
-            // Save state into URL.
-            this.mainComponent.set('route.path', '/search/' + this.domSearchTextInput.value);
-          });
+          var callback = this.searchEvent.bind(this);
+          this.listen('searchText', ['submit', 'keyup'], callback);
+          this.listen('searchSelectBuilding', ['change'], callback);
           // Launch callbacks
           this.isReady = true;
           //this.domSearchTextInput.focus();
@@ -98,15 +105,28 @@
 
     }
 
-    search(term, updateSearchField = true) {
+    searchEvent(e) {
+      e.preventDefault();
+      var term = this.domSearchTextInput.value;
+      var building = this.domSearchSelectBuilding.value;
+      this.search(term, {
+        updateSearchField: false,
+        building: building
+      });
+      // Save state into URL.
+      this.mainComponent.set('route.path', '/search/' + building + '/' + term);
+    }
+
+    search(term, options = {}) {
       let results = [];
       let value;
 
       this.stateSet('search');
 
       // Set value to input (used at first page load)
-      if (updateSearchField) {
+      if (options.updateSearchField !== undefined || options.updateSearchField) {
         this.domSearchTextInput.value = term;
+        this.domSearchSelectBuilding.value = options.building;
       }
 
       // Empty content.
@@ -117,12 +137,15 @@
       // This search method is temporary.
       // Iterates over items.
       for (let itemId in this.data) {
-        // Iterates over fields.
-        for (let key in this.data[itemId]) {
-          value = this.data[itemId][key];
-          if (value && value.indexOf && value.toLowerCase().indexOf(term) !== -1) {
-            // Use id as key to prevent duplicates.
-            results[itemId] = itemId;
+        // Filter by building.
+        if (options.building === 'all' || this.data[itemId]['Bâtiment'] === this.buildings[options.building]) {
+          // Iterates over fields.
+          for (let key in this.data[itemId]) {
+            value = this.data[itemId][key];
+            if (!term || (value && value.indexOf && value.toLowerCase().indexOf(term) !== -1)) {
+              // Use id as key to prevent duplicates.
+              results[itemId] = itemId;
+            }
           }
         }
       }
@@ -211,9 +234,9 @@
       xhr.send(data);
     }
 
-    mapZoneGetKey(name) {
-      for (let i in this.mapZones) {
-        if (this.mapZones[i] === name) {
+    buildingGetKey(name) {
+      for (let i in this.buildings) {
+        if (this.buildings[i] === name) {
           return i;
         }
       }

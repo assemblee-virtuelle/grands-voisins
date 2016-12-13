@@ -57,6 +57,7 @@
   <link rel="import" href="/src/gv-logo-mini/gv-logo-mini.html">
   <link rel="import" href="/src/gv-detail/gv-detail.html">
   <link rel="import" href="/src/search-results/search-results.html">
+  <link rel="import" href="/src/test-comp/test-comp.html">
 </head>
 <body>
 
@@ -76,7 +77,6 @@
 
     <header>
       <div class="container">
-        <a href="/">
           <div class="search row">
             <form id="searchForm">
               <div class="col col-xs-12 col-sm-2 col-search-logo">
@@ -87,18 +87,31 @@
                   <h1>[[title]]</h1>
                 </div>
               </div>
-              <div class="col col-sm-8 col-search-text">
+              <div class="col col-sm-6 col-search-text">
                 <input id="searchText" class="form-control" type="text"
                        placeholder="Entrez ici un terme de recherche...">
               </div>
+              <div class="col col-sm-2 col-search-building">
+                <select id="searchSelectBuilding" class="form-control"
+                        type="text">
+                  <option value="all">- Tous -</option>
+                  <template is="dom-repeat" items="{{buildings}}">
+                    <option value="{{item.key}}">{{item.name}}</option>
+                  </template>
+                </select>
+                <template is="dom-repeat" items="{{item in buildings}}}">
+                  <option value="{{item.key}}">{{item.name}}</option>
+                </template>
+              </div>
+
               <div class="col col-sm-2 col-search-button">
                 <input class="form-control btn btn-info" type="submit"
                        value="Ok">
               </div>
             </form>
           </div>
-        </a>
       </div>
+
     </header>
     <div id="gvMap">
       <div class="mapContent container">
@@ -159,6 +172,7 @@
     <footer>
       2016 - Les Grands Voisins
     </footer>
+
   </template>
 </dom-module>
 
@@ -166,7 +180,6 @@
   window.addEventListener('WebComponentsReady', function () {
     Polymer({
       is: 'gv-carto-app',
-
       properties: {
         pageTitle: {
           type: String,

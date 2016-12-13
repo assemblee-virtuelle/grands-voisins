@@ -151,7 +151,7 @@
         window.gvcDetailComponent = this;
       },
       displayMapZone: function (name, displayMode) {
-        document.getElementById('mapZone-' + window.gvc.mapZoneGetKey(name)).style.display = displayMode || 'block';
+        document.getElementById('mapZone-' + window.gvc.buildingGetKey(name)).style.display = displayMode || 'block';
       },
       clearMapZone: function () {
         // Hide current map zone.

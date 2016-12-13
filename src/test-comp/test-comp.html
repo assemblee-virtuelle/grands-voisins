@@ -1,0 +1,23 @@
+<dom-module id="gv-buildings">
+  <template>
+
+    <div> Employee list:</div>
+    <template is="dom-repeat" items="{{employees}}">
+      <div>First name: <span>{{item.first}}</span></div>
+      <div>Last name: <span>{{item.last}}</span></div>
+    </template>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'gv-buildings',
+      ready: function () {
+        this.employees = [
+          {first: 'Bob', last: 'Smith'},
+          {first: 'Sally', last: 'Johnson'}
+        ];
+      }
+    });
+  </script>
+</dom-module>
