@@ -94,7 +94,7 @@ header {
   display: none; }
 /* line 101, ../scss/style.scss */
 #gvMap .mapContent .gvMapInner {
-  border: 20px solid #F0F0F0;
+  border: 8px dashed #F0F0F0;
   transform: rotate(-1deg);
   max-width: 100vh;
   margin: 20px auto; }
