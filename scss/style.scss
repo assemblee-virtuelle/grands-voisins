@@ -101,7 +101,22 @@ header {
       border: 20px solid #F0F0F0;
       transform: rotate(-1deg);
       max-width: 100vh;
-      margin:20px auto;
+      margin: 20px auto;
+    }
+  }
+
+}
+
+// Responsive.
+@media (max-width: 750px) {
+  #gvMap {
+    .mapContent {
+      .gvMapInner {
+        border: 0;
+        transform: none;
+        max-width: inherit;
+        margin: 0;
+      }
     }
   }
 }

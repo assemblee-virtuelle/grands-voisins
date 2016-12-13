@@ -98,32 +98,39 @@ header {
   max-width: 100vh;
   margin: 20px auto; }
 
-/* line 109, ../scss/style.scss */
+@media (max-width: 750px) {
+  /* line 114, ../scss/style.scss */
+  #gvMap .mapContent .gvMapInner {
+    border: 0;
+    transform: none;
+    max-width: inherit;
+    margin: 0; } }
+/* line 124, ../scss/style.scss */
 .nav-tabs a {
   color: #DDD !important;
   cursor: pointer !important; }
-  /* line 112, ../scss/style.scss */
+  /* line 127, ../scss/style.scss */
   .nav-tabs a span {
     margin-right: 8px; }
 
-/* line 118, ../scss/style.scss */
+/* line 133, ../scss/style.scss */
 #searchResults ul {
   padding: 0; }
-/* line 121, ../scss/style.scss */
+/* line 136, ../scss/style.scss */
 #searchResults li {
   list-style: none; }
-/* line 124, ../scss/style.scss */
+/* line 139, ../scss/style.scss */
 #searchResults p {
   text-align: justify; }
 
-/* line 134, ../scss/style.scss */
+/* line 149, ../scss/style.scss */
 footer {
   margin-top: 80px;
   background-color: #F0F0F0;
   padding: 20px;
   text-align: center; }
 
-/* line 141, ../scss/style.scss */
+/* line 156, ../scss/style.scss */
 body.dev-env #gv-logo-inner {
   animation-delay: 0s;
   display: none; }
