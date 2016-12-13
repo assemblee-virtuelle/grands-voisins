@@ -72,7 +72,7 @@ header {
     }
   }
   // Responsive.
-  @media (max-width: 750px) {
+  @media (max-width: 768px) {
     .logo-circle {
       position: initial;
       width: auto;
@@ -84,7 +84,7 @@ header {
       }
     }
     .col-search-logo {
-      margin: -55px 0;
+      margin: -12vw 0 -8vw 0;
     }
     .col-search-button {
       margin-top: 10px;
@@ -104,11 +104,10 @@ header {
       margin: 20px auto;
     }
   }
-
 }
 
 // Responsive.
-@media (max-width: 750px) {
+@media (max-width: 768px) {
   #gvMap {
     .mapContent {
       .gvMapInner {
