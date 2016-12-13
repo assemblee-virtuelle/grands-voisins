@@ -28,6 +28,11 @@
         "jalaguier": "Jalaguier",
         "rapine": "Rapine"
       };
+
+      // Special class for dev env.
+      if (window.location.hostname === '127.0.0.1') {
+        window.document.body.classList.add('dev-env');
+      }
       // Load the first non semantic database.
       this.ajax({
         url: '/src/data.json', success: (e) => {

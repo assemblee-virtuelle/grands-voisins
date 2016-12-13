@@ -109,3 +109,8 @@ footer {
   padding: 20px;
   text-align: center;
 }
+
+body.dev-env #gv-logo-inner {
+  animation-delay: 0s;
+  display: none;
+}
