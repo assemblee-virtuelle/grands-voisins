@@ -1,83 +1,122 @@
+/* line 1, ../scss/style.scss */
 body {
   margin: 0;
   font-family: 'Varela Round', cursive;
   color: #555; }
 
+/* line 7, ../scss/style.scss */
 a {
   color: #BB6600; }
 
+/* line 11, ../scss/style.scss */
 a:hover {
   color: #FFCC00; }
 
+/* line 15, ../scss/style.scss */
 .clearfix {
   clear: both; }
 
+/* line 21, ../scss/style.scss */
 header {
   animation: headerFadeIn 0.5s cubic-bezier(0, 0.6, 0.4, 1) forwards;
   background-color: #FFCC00;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  position: absolute;
-  padding: 32.5px 20px;
-  width: auto;
+  padding: 1.5px 20px;
   top: 10px;
-  left: 10px;
-  border-radius: 140px; }
+  left: 10px; }
 @keyframes headerFadeIn {
   0% {
     top: -200px; }
   100% {
     top: 10px; } }
-  header h1 {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0; }
-    header h1 img {
-      width: 80px;
-      margin: 10px; }
-    header h1 span {
-      color: #CCC;
+  /* line 31, ../scss/style.scss */
+  header .logo-circle {
+    position: absolute;
+    background: #FFCC00;
+    border-radius: 1000px;
+    z-index: 100;
+    width: 110px;
+    height: 110px;
+    padding: 12px 10px;
+    top: -27px; }
+    /* line 40, ../scss/style.scss */
+    header .logo-circle img {
+      width: 80px; }
+    /* line 43, ../scss/style.scss */
+    header .logo-circle h1 {
       display: none; }
+  /* line 48, ../scss/style.scss */
+  header .search {
+    margin-top: 10px;
+    margin-bottom: 10px; }
+    /* line 51, ../scss/style.scss */
+    header .search .nav {
+      margin: 0 15px; }
+      /* line 53, ../scss/style.scss */
+      header .search .nav li {
+        margin-top: 10px; }
+        /* line 55, ../scss/style.scss */
+        header .search .nav li a {
+          padding-left: 15px; }
+          /* line 57, ../scss/style.scss */
+          header .search .nav li a span {
+            margin-left: 0;
+            margin-right: 8px; }
+    /* line 64, ../scss/style.scss */
+    header .search input[type=submit] {
+      background: #333;
+      border: 0;
+      color: rgba(183, 154, 118, 0.95); }
+    /* line 69, ../scss/style.scss */
+    header .search input[type=submit]:hover {
+      background: #fff192; }
+  @media (max-width: 750px) {
+    /* line 75, ../scss/style.scss */
+    header .logo-circle {
+      position: initial;
+      width: auto;
+      padding: 10px;
+      height: auto;
+      top: 0; }
+      /* line 81, ../scss/style.scss */
+      header .logo-circle img {
+        width: auto; }
+    /* line 85, ../scss/style.scss */
+    header .col-search-logo {
+      margin: -55px 0; }
+    /* line 88, ../scss/style.scss */
+    header .col-search-button {
+      margin-top: 10px; } }
 
+/* line 96, ../scss/style.scss */
 #gvMap .mapContent .mapZone {
   display: none; }
 
-.search {
-  margin-top: 10px;
-  margin-bottom: 10px; }
-  .search .nav {
-    margin: 0 15px; }
-    .search .nav li {
-      margin-top: 10px; }
-      .search .nav li a {
-        padding-left: 15px; }
-        .search .nav li a span {
-          margin-left: 0;
-          margin-right: 8px; }
-  .search input[type=submit] {
-    background: #FFCC00;
-    border: 0; }
-
+/* line 102, ../scss/style.scss */
 .nav-tabs a {
   color: #DDD !important;
   cursor: pointer !important; }
+  /* line 105, ../scss/style.scss */
   .nav-tabs a span {
     margin-right: 8px; }
 
+/* line 111, ../scss/style.scss */
 #searchResults ul {
   padding: 0; }
+/* line 114, ../scss/style.scss */
 #searchResults li {
   list-style: none; }
+/* line 117, ../scss/style.scss */
 #searchResults p {
   text-align: justify; }
 
+/* line 127, ../scss/style.scss */
 footer {
   margin-top: 80px;
   background-color: #F0F0F0;
   padding: 20px;
   text-align: center; }
 
+/* line 134, ../scss/style.scss */
 body.dev-env #gv-logo-inner {
   animation-delay: 0s;
   display: none; }
-
-/*# sourceMappingURL=style.css.map */

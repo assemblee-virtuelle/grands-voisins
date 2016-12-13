@@ -54,6 +54,7 @@
   <!-- components -->
   <link rel="import" href="/src/search-result/search-result.html">
   <link rel="import" href="/src/gv-logo/gv-logo.html">
+  <link rel="import" href="/src/gv-logo-mini/gv-logo-mini.html">
   <link rel="import" href="/src/gv-detail/gv-detail.html">
   <link rel="import" href="/src/search-results/search-results.html">
 </head>
@@ -74,13 +75,29 @@
     <gv-logo></gv-logo>
 
     <header>
-      <h1>
-        <a href="/">
-          <img alt="Les Grands Voisins - logo"
-               src="/images/logo_les-grands-voisins-white.png">
-          <span>[[title]]</span>
-        </a>
-      </h1>
+      <div class="container">
+          <a href="/">
+            <div class="search row">
+              <form id="searchForm">
+                <div class="col col-xs-12 col-sm-2 col-search-logo">
+                  <div class="logo-circle">
+                    <!--<img alt="Les Grands Voisins - logo"
+                         src="/images/logo_les-grands-voisins-white.png">-->
+                    <gv-logo-mini></gv-logo-mini>
+                    <h1>[[title]]</h1>
+                  </div>
+                </div>
+                <div class="col col-sm-8 col-search-text">
+                  <input id="searchText" class="form-control" type="text"
+                         placeholder="Entrez ici un terme de recherche...">
+                </div>
+                <div class="col col-sm-2 col-search-button">
+                  <input class="form-control btn btn-info" type="submit" value="Ok">
+                </div>
+              </form>
+            </div>
+          </a>
+      </div>
     </header>
     <div id="gvMap">
       <div class="mapContent container">
@@ -112,17 +129,6 @@
       </div>
     </div>
     <div class="container">
-      <div class="search row">
-        <form id="searchForm">
-          <div class="col col-sm-10">
-            <input id="searchText" class="form-control" type="text"
-                   placeholder="Entrez ici un terme de recherche...">
-          </div>
-          <div class="col col-sm-2">
-            <input class="form-control btn btn-info" type="submit" value="Ok">
-          </div>
-        </form>
-      </div>
 
       <!-- app-location binds with the URL and produces a route for
       app-route elements to consume. Since this demo needs to run without

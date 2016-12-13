@@ -23,58 +23,79 @@ header {
     0% { top: -200px; }
     100% { top: 10px; }
   }
-  animation: headerFadeIn .5s cubic-bezier(0, .6, .4, 1) forwards;
+  animation: headerFadeIn 0.5s cubic-bezier(0, 0.6, 0.4, 1) forwards;
   background-color: #FFCC00;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  position: absolute;
-  padding: 32.5px 20px;
-  width: auto;
+  padding: 1.5px 20px;
   top: 10px;
   left: 10px;
-  border-radius: 140px;
-  h1 {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0;
+  .logo-circle {
+    position: absolute;
+    background: #FFCC00;
+    border-radius: 1000px;
+    z-index: 100;
+    width: 110px;
+    height: 110px;
+    padding: 12px 10px;
+    top: -27px;
     img {
       width: 80px;
-      margin: 10px;
     }
-    span {
-      color: #CCC;
+    h1 {
       display: none;
+    }
+  }
+
+  .search {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    .nav {
+      margin: 0 15px;
+      li {
+        margin-top: 10px;
+        a {
+          padding-left: 15px;
+          span {
+            margin-left: 0;
+            margin-right: 8px;
+          }
+        }
+      }
+    }
+    input[type=submit] {
+      background: #333;
+      border: 0;
+      color: rgba(183, 154, 118, 0.95);
+    }
+    input[type=submit]:hover {
+      background: #fff192;
+    }
+  }
+  // Responsive.
+  @media (max-width: 750px) {
+    .logo-circle {
+      position: initial;
+      width: auto;
+      padding: 10px;
+      height: auto;
+      top: 0;
+      img {
+        width: auto;
+      }
+    }
+    .col-search-logo {
+      margin: -55px 0;
+    }
+    .col-search-button {
+      margin-top: 10px;
     }
   }
 }
 
 #gvMap {
-
   .mapContent {
     .mapZone {
       display: none;
     }
-  }
-}
-
-.search {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  .nav {
-    margin: 0 15px;
-    li {
-      margin-top: 10px;
-      a {
-        padding-left: 15px;
-        span {
-          margin-left: 0;
-          margin-right: 8px;
-        }
-      }
-    }
-  }
-  input[type=submit] {
-    background: #FFCC00;
-    border: 0;
   }
 }
 
