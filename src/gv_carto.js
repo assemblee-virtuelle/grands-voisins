@@ -44,7 +44,7 @@
       }
       // Load the first non semantic database.
       this.ajax({
-        url: '/src/data.json', success: (e) => {
+        url: '/src/dataAsso.json', success: (e) => {
           this.data = JSON.parse(e.responseText);
           // Shortcuts.
           this.domSearchTextInput = this.domId('searchText');
