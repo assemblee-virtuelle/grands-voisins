@@ -54,7 +54,8 @@
           this.domSearchSelectBuilding = this.domId('searchSelectBuilding');
           // Listeners.
           var callbackSearchEvent = this.searchEvent.bind(this);
-          this.listen('searchText', ['submit', 'keyup'], callbackSearchEvent);
+          this.listen('searchForm', 'submit', callbackSearchEvent);
+          this.listen('searchText', 'keyup', callbackSearchEvent);
           this.listen('searchSelectBuilding', ['change'], callbackSearchEvent);
           // Launch callbacks
           this.isReady = true;
