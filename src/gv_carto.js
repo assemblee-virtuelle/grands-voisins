@@ -53,9 +53,9 @@
           this.domDetail = this.domId('detail');
           this.domSearchSelectBuilding = this.domId('searchSelectBuilding');
           // Listeners.
-          var callback = this.searchEvent.bind(this);
-          this.listen('searchText', ['submit', 'keyup'], callback);
-          this.listen('searchSelectBuilding', ['change'], callback);
+          var callbackSearchEvent = this.searchEvent.bind(this);
+          this.listen('searchText', ['submit', 'keyup'], callbackSearchEvent);
+          this.listen('searchSelectBuilding', ['change'], callbackSearchEvent);
           // Launch callbacks
           this.isReady = true;
           this.domSearchTextInput.focus();
@@ -79,6 +79,11 @@
           // Bind two events.
           mapZones.on('mouseover', callback);
           mapZones.on('mouseout', callback);
+          mapZones.on('click', (e) => {
+            var key = e.currentTarget.getAttribute('id').split('-')[1];
+            this.domSearchSelectBuilding.value = key;
+            callbackSearchEvent();
+          });
         }
       });
     }
@@ -122,7 +127,8 @@
     }
 
     searchEvent(e) {
-      e.preventDefault();
+      // Event may be missing.
+      e && e.preventDefault();
       var term = this.domSearchTextInput.value;
       var building = this.domSearchSelectBuilding.value;
       this.search(term, {

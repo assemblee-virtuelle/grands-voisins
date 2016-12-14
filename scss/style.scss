@@ -127,7 +127,7 @@ header {
       animation: mapZoneFadeInStrong 0.5s cubic-bezier(0.8, 0, 0.3, 0.9) forwards;
     }
     .mapZone.discreet {
-      animation: mapZoneFadeOut 2s cubic-bezier(0.8, 0, 0.3, 0.9) forwards;
+      animation: mapZoneFadeOut 0.5s cubic-bezier(0.8, 0, 0.3, 0.9) forwards;
     }
     .gvMapInner {
       border: 8px dashed #F0F0F0;
