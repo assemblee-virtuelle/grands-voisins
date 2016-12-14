@@ -97,8 +97,7 @@
             }, 500);
           });
           mapZones.on('click', (e) => {
-            var key = e.currentTarget.getAttribute('id').split('-')[1];
-            this.domSearchSelectBuilding.value = key;
+            this.domSearchSelectBuilding.value = e.currentTarget.getAttribute('id').split('-')[1];
             callbackSearchEvent();
           });
         }

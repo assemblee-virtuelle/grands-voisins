@@ -81,9 +81,6 @@
         document.head.appendChild(this.styleSheet);
         this.animatePaths('#TEXT path', 'displayPath 1s cubic-bezier(.36,.34,.29,1) forwards', 0.08);
         this.animatePaths('#SHADOW path', this.animatePathShadowItem.bind(this), 0.05);
-        this.addEventListener('click',function() {
-          alert('ok');
-        });
       },
 
       animatePaths: function (selector, animation, delay) {
@@ -106,7 +103,8 @@
       },
 
       animatePathShadowItem: function (path, length) {
-        this.styleSheet.sheet.insertRule('\
+        let sheet = this.styleSheet.sheet;
+        sheet.insertRule('\
             @keyframes displayPathShadow' + this.pathCounter + ' {\
                 0% {\
                   stroke-dashoffset: ' + length + ';\
@@ -118,7 +116,7 @@
                   stroke-dashoffset: ' + -length + ';\
                 }\
             }\
-            ', this.styleSheet.sheet.rules.length);
+            ', (sheet.cssRules || sheet.rules).length);
         path.style.animation = 'displayPathShadow' + this.pathCounter + ' 1s cubic-bezier(.36,.34,.29,1) forwards';
         this.pathCounter++;
       }
