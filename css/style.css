@@ -18,7 +18,7 @@ a:hover {
 
 /* line 21, ../scss/style.scss */
 header {
-  animation: headerFadeIn 0.5s cubic-bezier(0, 0.6, 0.4, 1) forwards;
+  animation: headerFadeIn 0.5s cubic-bezier(0.8, 0, 0.3, 0.9) forwards;
   background-color: #FFCC00;
   padding: 1.5px 20px;
   top: 10px;
@@ -89,7 +89,32 @@ header {
     header .col-search-building {
       margin-top: 10px; } }
 
-/* line 101, ../scss/style.scss */
+@keyframes mapZoneFadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 0.2; } }
+@keyframes mapZoneFadeInStrong {
+  from {
+    opacity: 0.2; }
+  to {
+    opacity: 0.5; } }
+@keyframes mapZoneFadeOut {
+  from {
+    opacity: 0.2; }
+  to {
+    opacity: 0.05; } }
+/* line 122, ../scss/style.scss */
+#gvMap .mapContent .mapZone {
+  cursor: pointer;
+  animation: mapZoneFadeIn 0.5s cubic-bezier(0.8, 0, 0.3, 0.9) forwards; }
+/* line 126, ../scss/style.scss */
+#gvMap .mapContent .mapZone.strong {
+  animation: mapZoneFadeInStrong 0.5s cubic-bezier(0.8, 0, 0.3, 0.9) forwards; }
+/* line 129, ../scss/style.scss */
+#gvMap .mapContent .mapZone.discreet {
+  animation: mapZoneFadeOut 2s cubic-bezier(0.8, 0, 0.3, 0.9) forwards; }
+/* line 132, ../scss/style.scss */
 #gvMap .mapContent .gvMapInner {
   border: 8px dashed #F0F0F0;
   transform: rotate(-1deg);
@@ -97,38 +122,38 @@ header {
   margin: 20px auto; }
 
 @media (max-width: 768px) {
-  /* line 114, ../scss/style.scss */
+  /* line 145, ../scss/style.scss */
   #gvMap .mapContent .gvMapInner {
     border: 0;
     transform: none;
     max-width: inherit;
     margin: 0; } }
-/* line 124, ../scss/style.scss */
+/* line 155, ../scss/style.scss */
 .nav-tabs a {
   color: #DDD !important;
   cursor: pointer !important; }
-  /* line 127, ../scss/style.scss */
+  /* line 158, ../scss/style.scss */
   .nav-tabs a span {
     margin-right: 8px; }
 
-/* line 133, ../scss/style.scss */
+/* line 164, ../scss/style.scss */
 #searchResults ul {
   padding: 0; }
-/* line 136, ../scss/style.scss */
+/* line 167, ../scss/style.scss */
 #searchResults li {
   list-style: none; }
-/* line 139, ../scss/style.scss */
+/* line 170, ../scss/style.scss */
 #searchResults p {
   text-align: justify; }
 
-/* line 149, ../scss/style.scss */
+/* line 180, ../scss/style.scss */
 footer {
   margin-top: 80px;
   background-color: #F0F0F0;
   padding: 20px;
   text-align: center; }
 
-/* line 156, ../scss/style.scss */
+/* line 187, ../scss/style.scss */
 body.dev-env #gv-logo-inner {
   animation-delay: 0s;
   display: none; }

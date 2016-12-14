@@ -23,7 +23,7 @@ header {
     0% { top: -200px; }
     100% { top: 10px; }
   }
-  animation: headerFadeIn 0.5s cubic-bezier(0, 0.6, 0.4, 1) forwards;
+  animation: headerFadeIn 0.5s cubic-bezier(0.8, 0, 0.3, 0.9) forwards;
   background-color: #FFCC00;
   padding: 1.5px 20px;
   top: 10px;
@@ -94,9 +94,40 @@ header {
 }
 
 #gvMap {
+  @keyframes mapZoneFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 0.2;
+    }
+  }
+  @keyframes mapZoneFadeInStrong {
+    from {
+      opacity: 0.2;
+    }
+    to {
+      opacity: 0.5;
+    }
+  }
+  @keyframes mapZoneFadeOut {
+    from {
+      opacity: 0.2;
+    }
+    to {
+      opacity: 0.05;
+    }
+  }
   .mapContent {
     .mapZone {
-      // display: none;
+      cursor: pointer;
+      animation: mapZoneFadeIn 0.5s cubic-bezier(0.8, 0, 0.3, 0.9) forwards;
+    }
+    .mapZone.strong {
+      animation: mapZoneFadeInStrong 0.5s cubic-bezier(0.8, 0, 0.3, 0.9) forwards;
+    }
+    .mapZone.discreet {
+      animation: mapZoneFadeOut 2s cubic-bezier(0.8, 0, 0.3, 0.9) forwards;
     }
     .gvMapInner {
       border: 8px dashed #F0F0F0;

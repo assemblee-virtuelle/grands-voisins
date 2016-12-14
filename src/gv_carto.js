@@ -58,11 +58,27 @@
           this.listen('searchSelectBuilding', ['change'], callback);
           // Launch callbacks
           this.isReady = true;
-          //this.domSearchTextInput.focus();
+          this.domSearchTextInput.focus();
           this.stateSet('waiting');
           for (let i in readyCallbacks) {
             readyCallbacks[i]();
           }
+
+          var mapZones = $('#gvMap .mapZone');
+          var callback = function (e) {
+            // Define add or remove class.
+            var method = e.type === 'mouseover' ? 'add' : 'remove';
+            mapZones.each((index, zone) => {
+              // On all paths.
+              zone.classList[method](
+                // Use strong class for current hovered item.
+                zone === $(this).get(0) ? 'strong' : 'discreet'
+              );
+            });
+          };
+          // Bind two events.
+          mapZones.on('mouseover', callback);
+          mapZones.on('mouseout', callback);
         }
       });
     }
