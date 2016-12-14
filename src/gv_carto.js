@@ -71,15 +71,31 @@
             var method = e.type === 'mouseover' ? 'add' : 'remove';
             mapZones.each((index, zone) => {
               // On all paths.
-              zone.classList[method](
-                // Use strong class for current hovered item.
-                zone === $(this).get(0) ? 'strong' : 'discreet'
-              );
+              zone.classList[method]('discreet');
             });
           };
+          var timeout;
+          var isOver = false;
           // Bind two events.
-          mapZones.on('mouseover', callback);
-          mapZones.on('mouseout', callback);
+          mapZones.on('mouseover', function (e) {
+            isOver = true;
+            e.currentTarget.classList.add('strong');
+            e.currentTarget.classList.remove('discreet');
+            callback.call(this, e);
+          });
+          mapZones.on('mouseout', function (e) {
+            if (timeout) {
+              clearTimeout(timeout);
+            }
+            isOver = false;
+            e.currentTarget.classList.remove('strong');
+            timeout = setTimeout(() => {
+              // Mouse is still not over.
+              if (!isOver) {
+                callback.call(this, e);
+              }
+            }, 500);
+          });
           mapZones.on('click', (e) => {
             var key = e.currentTarget.getAttribute('id').split('-')[1];
             this.domSearchSelectBuilding.value = key;
