@@ -54,7 +54,10 @@
           this.domSearchSelectBuilding = this.domId('searchSelectBuilding');
           // Listeners.
           var callbackSearchEvent = this.searchEvent.bind(this);
-          this.listen('searchForm', 'submit', callbackSearchEvent);
+          this.listen('searchForm', 'submit', (e) => {
+            this.scrollToSearch();
+            callbackSearchEvent(e);
+          });
           this.listen('searchText', 'keyup', callbackSearchEvent);
           this.listen('searchSelectBuilding', ['change'], callbackSearchEvent);
           // Launch callbacks
@@ -99,6 +102,7 @@
           mapZones.on('click', (e) => {
             this.domSearchSelectBuilding.value = e.currentTarget.getAttribute('id').split('-')[1];
             callbackSearchEvent();
+            this.scrollToSearch();
           });
         }
       });
@@ -140,6 +144,13 @@
 
     stateSearchExit() {
 
+    }
+
+    scrollToSearch() {
+      $(window).scrollTo('#searchTabs', {
+        duration: 1000,
+        easing: 'easeOutQuad'
+      });
     }
 
     searchEvent(e) {
