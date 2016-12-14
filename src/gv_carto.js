@@ -64,47 +64,75 @@
           this.isReady = true;
           this.domSearchTextInput.focus();
           this.stateSet('waiting');
+          this.$mapZones = $('#gvMap .mapZone');
+          this.mapIsOver = false;
+          this.mapTimeout = false;
+          // Bind two events.
+          this.$mapZones
+            //
+            .on('mouseover', (e) => {
+              this.mapSelectBuilding(e.currentTarget.getAttribute('id').split('-')[1]);
+            })
+            //
+            .on('mouseout', (e) => {
+              this.mapDeselectBuilding(e.currentTarget.getAttribute('id').split('-')[1]);
+            })
+            // Click.
+            .on('click', (e) => {
+              this.domSearchSelectBuilding.value = e.currentTarget.getAttribute('id').split('-')[1];
+              callbackSearchEvent();
+              this.scrollToSearch();
+            });
+
+          // Ready callbacks.
           for (let i in readyCallbacks) {
             readyCallbacks[i]();
           }
-
-          var mapZones = $('#gvMap .mapZone');
-          var callback = function (e) {
-            // Define add or remove class.
-            var method = e.type === 'mouseover' ? 'add' : 'remove';
-            mapZones.each((index, zone) => {
-              // On all paths.
-              zone.classList[method]('discreet');
-            });
-          };
-          var timeout;
-          var isOver = false;
-          // Bind two events.
-          mapZones.on('mouseover', function (e) {
-            isOver = true;
-            e.currentTarget.classList.add('strong');
-            e.currentTarget.classList.remove('discreet');
-            callback.call(this, e);
-          });
-          mapZones.on('mouseout', function (e) {
-            if (timeout) {
-              clearTimeout(timeout);
-            }
-            isOver = false;
-            e.currentTarget.classList.remove('strong');
-            timeout = setTimeout(() => {
-              // Mouse is still not over.
-              if (!isOver) {
-                callback.call(this, e);
-              }
-            }, 500);
-          });
-          mapZones.on('click', (e) => {
-            this.domSearchSelectBuilding.value = e.currentTarget.getAttribute('id').split('-')[1];
-            callbackSearchEvent();
-            this.scrollToSearch();
-          });
         }
+      });
+    }
+
+    mapGetZone(key) {
+      return document.getElementById('mapZone-' + key);
+    }
+
+    mapSelectBuilding(key) {
+      this.mapIsOver = true;
+      this.mapSelectCurrent = key;
+      let zone = this.mapGetZone(this.mapSelectCurrent);
+      zone.classList.add('strong');
+      zone.classList.remove('discreet');
+      this.mapSelectBuildingToggle(true);
+    }
+
+    mapDeselectBuilding() {
+      if (this.mapSelectCurrent) {
+        this.mapGetZone(this.mapSelectCurrent).classList.remove('strong');
+        delete this.mapSelectCurrent;
+      }
+      if (this.mapTimeout) {
+        clearTimeout(this.mapTimeout);
+      }
+      this.mapIsOver = false;
+      this.mapTimeout = setTimeout(() => {
+        // Mouse is still not over.
+        if (!this.mapIsOver) {
+          this.mapDeselectBuildingReset();
+        }
+      }, 500);
+    }
+
+    mapDeselectBuildingReset() {
+      this.mapTimeout = false;
+      this.mapSelectBuildingToggle(false);
+    }
+
+    mapSelectBuildingToggle(add) {
+      // Define add or remove class.
+      var method = add ? 'add' : 'remove';
+      this.$mapZones.each((index, zone) => {
+        // On all paths.
+        zone.classList[method]('discreet');
       });
     }
 

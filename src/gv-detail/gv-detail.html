@@ -139,8 +139,8 @@
           }.bind(this));
         }
         else {
-          // Hide all maps.
-          this.clearMapZone();
+          // Hide all maps on live route change.
+          window.gvc && window.gvc.mapDeselectBuilding();
         }
       },
       backToResults: function (e) {
@@ -150,19 +150,10 @@
       ready: function () {
         window.gvcDetailComponent = this;
       },
-      displayMapZone: function (name, displayMode) {
-        document.getElementById('mapZone-' + window.gvc.buildingGetKey(name)).style.display = displayMode || 'block';
-      },
-      clearMapZone: function () {
-        // Hide current map zone.
-        if (this.building) {
-          this.displayMapZone(this.building, 'none');
-        }
-      },
       refresh: function (id) {
 
         window.GVCarto.ready(function () {
-          this.clearMapZone();
+          window.gvc.mapDeselectBuilding();
           let i;
           let data = window.gvc.data[id];
           let filtered = {
@@ -184,7 +175,7 @@
           for (i in filtered) {
             this.set(i, filtered[i]);
           }
-          this.displayMapZone(filtered.building);
+          window.gvc.mapSelectBuilding(window.gvc.buildingGetKey(filtered.building));
         }.bind(this));
       }
     });
