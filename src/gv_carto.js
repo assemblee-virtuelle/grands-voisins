@@ -46,48 +46,55 @@
       this.ajax({
         url: '/src/dataAsso.json', success: (e) => {
           this.data = JSON.parse(e.responseText);
-          // Shortcuts.
-          this.domSearchTextInput = this.domId('searchText');
-          this.domSearchResults = this.domId('searchResults');
-          this.domSearchTabs = this.domId('searchTabs');
-          this.domDetail = this.domId('detail');
-          this.domSearchSelectBuilding = this.domId('searchSelectBuilding');
-          // Listeners.
-          var callbackSearchEvent = this.searchEvent.bind(this);
-          this.listen('searchForm', 'submit', (e) => {
-            this.scrollToSearch();
-            callbackSearchEvent(e);
-          });
-          this.listen('searchText', 'keyup', callbackSearchEvent);
-          this.listen('searchSelectBuilding', ['change'], callbackSearchEvent);
-          // Launch callbacks
-          this.isReady = true;
-          this.domSearchTextInput.focus();
-          this.stateSet('waiting');
-          this.$mapZones = $('#gvMap .mapZone');
-          this.mapIsOver = false;
-          this.mapTimeout = false;
-          // Bind two events.
-          this.$mapZones
-            //
-            .on('mouseover', (e) => {
-              this.mapSelectBuilding(e.currentTarget.getAttribute('id').split('-')[1]);
-            })
-            //
-            .on('mouseout', (e) => {
-              this.mapDeselectBuilding(e.currentTarget.getAttribute('id').split('-')[1]);
-            })
-            // Click.
-            .on('click', (e) => {
-              this.domSearchSelectBuilding.value = e.currentTarget.getAttribute('id').split('-')[1];
-              callbackSearchEvent();
-              this.scrollToSearch();
-            });
+          // Load peoples.
+          this.ajax({
+            url: '/src/dataPeople.json', success: (e) => {
+              this.dataPeople = JSON.parse(e.responseText);
+              // Shortcuts.
+              this.domSearchTextInput = this.domId('searchText');
+              this.domSearchResults = this.domId('searchResults');
+              this.domSearchTabs = this.domId('searchTabs');
+              this.domOrganization = this.domId('organization');
+              this.domSearchSelectBuilding = this.domId('searchSelectBuilding');
+              // Listeners.
+              var callbackSearchEvent = this.searchEvent.bind(this);
+              this.listen('searchForm', 'submit', (e) => {
+                this.scrollToSearch();
+                callbackSearchEvent(e);
+              });
+              this.listen('searchText', 'keyup', callbackSearchEvent);
+              this.listen('searchSelectBuilding', ['change'], callbackSearchEvent);
+              // Launch callbacks
+              this.isReady = true;
+              this.domSearchTextInput.focus();
+              this.stateSet('waiting');
+              this.$mapZones = $('#gvMap .mapZone');
+              this.mapIsOver = false;
+              this.mapTimeout = false;
+              // Bind two events.
+              this.$mapZones
+                //
+                .on('mouseover', (e) => {
+                  this.mapSelectBuilding(e.currentTarget.getAttribute('id').split('-')[1]);
+                })
+                //
+                .on('mouseout', (e) => {
+                  this.mapDeselectBuilding(e.currentTarget.getAttribute('id').split('-')[1]);
+                })
+                // Click.
+                .on('click', (e) => {
+                  this.domSearchSelectBuilding.value = e.currentTarget.getAttribute('id').split('-')[1];
+                  callbackSearchEvent();
+                  this.scrollToSearch();
+                });
 
-          // Ready callbacks.
-          for (let i in readyCallbacks) {
-            readyCallbacks[i]();
-          }
+              // Ready callbacks.
+              for (let i in readyCallbacks) {
+                readyCallbacks[i]();
+              }
+            }
+          });
+
         }
       });
     }
@@ -237,20 +244,20 @@
       }
     }
 
-    /* -- Detail -- */
+    /* -- Organization -- */
 
-    stateDetailInit() {
+    stateOrganizationInit() {
       // Display zone.
-      this.domDetail.style.display = 'block';
+      this.domOrganization.style.display = 'block';
     }
 
-    stateDetailExit() {
+    stateOrganizationExit() {
       // Set to default (hidden).
-      this.domDetail.style.display = null;
+      this.domOrganization.style.display = null;
     }
 
-    detail(id) {
-      this.stateSet('detail');
+    organization(id) {
+      this.stateSet('organization');
     }
 
     listen(id, event, callback) {

@@ -1,14 +1,14 @@
-<dom-module id="gv-detail">
-  <link rel="import" type="css" href="gv-detail.css">
+<dom-module id="gv-organization">
+  <link rel="import" type="css" href="gv-organization.css">
   <template>
-    <div id="detail">
-      <ul id="detailTools" class="nav nav-tabs">
+    <div id="organization">
+      <ul id="organizationTools" class="nav nav-tabs">
         <li role="presentation" class="active">
-          <a id="detailBack"
+          <a id="organizationBack"
              href="javascript:history.back();"><span class="glyphicon glyphicon-chevron-left"></span>Retour</a>
         </li>
         <li role="presentation" class="active">
-          <a id="detailEdit"
+          <a id="organizationEdit"
              href="#"><span class="glyphicon glyphicon-edit"></span>
             Editer</a>
         </li>
@@ -16,13 +16,13 @@
       <div class="row">
         <div class="col col-sm-8">
           <h2>[[title]]</h2>
-          <div class="detail-header row">
-            <div class="detail-header col col-sm-4">
+          <div class="organization-header row">
+            <div class="organization-header col col-sm-4">
               <img class="illustration"
                    src="images/logo_les-grands-voisins.png">
             </div>
-            <div class="detail-header col col-sm-8">
-              <table class="detailInfo">
+            <div class="organization-header col col-sm-8">
+              <table class="organizationInfo">
                 <tr>
                   <td>Statut</td>
                   <td>[[status]]</td>
@@ -72,14 +72,6 @@
         </div>
         <div class="col col-sm-4">
           <div class="block">
-            <h3>Contribue à</h3>
-            <ul>
-              <li>
-                <a href="#">Projet 1</a>
-              </li>
-            </ul>
-          </div>
-          <div class="block">
             <h3>Emploie</h3>
             <ul>
               <li>
@@ -93,35 +85,13 @@
               </li>
             </ul>
           </div>
-          <div class="block">
-            <h3>Défend</h3>
-            <ul>
-              <li>
-                <a href="#">Idée 1</a>
-              </li>
-              <li>
-                <a href="#">Idée 2</a>
-              </li>
-            </ul>
-          </div>
-          <div class="block">
-            <h3>Possède</h3>
-            <ul>
-              <li>
-                <a href="#">Ressource 1</a>
-              </li>
-              <li>
-                <a href="#">Ressource 2</a>
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>
   </template>
   <script>
     Polymer({
-      is: 'gv-detail',
+      is: 'gv-organization',
       properties: {
         id: String,
         title: String,
@@ -133,7 +103,7 @@
       },
       _routeChanged: function (data) {
         // Don't know how to filter out this.
-        if (data.prefix === '/detail') {
+        if (data.prefix === '/organization') {
           window.GVCarto.ready(function () {
             this.refresh(data.path.slice(1));
           }.bind(this));
@@ -148,7 +118,7 @@
         window.gvc.stateSet('search');
       },
       ready: function () {
-        window.gvcDetailComponent = this;
+        window.gvcOrganizationComponent = this;
       },
       refresh: function (id) {
 
@@ -172,6 +142,8 @@
             twitter: data['Compte twitter'],
             url: data['Site Web']
           };
+          // Search related peoples.
+
           for (i in filtered) {
             this.set(i, filtered[i]);
           }
