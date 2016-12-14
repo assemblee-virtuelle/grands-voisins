@@ -182,6 +182,27 @@ footer {
   background-color: #F0F0F0;
   padding: 20px;
   text-align: center;
+  $logoColor: rgba(0, 0, 0, .3);
+  .gv-logo-mini,
+  .gv-logo-mini div,
+  .gv-logo-mini svg,
+  .av-logo-svg {
+    width: 40px;
+    display: inline;
+    vertical-align: middle;
+  }
+
+  .av-logo-svg {
+    path {
+      fill: $logoColor;
+    }
+  }
+
+  .gv-logo-mini svg {
+    path {
+      stroke: $logoColor;
+    }
+  }
 }
 
 body.dev-env #gv-logo-inner {

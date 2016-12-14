@@ -16,7 +16,8 @@
   <script src="/src/gv_carto.js"></script>
   <script src="/bower_components/jquery.scrollTo/jquery.scrollTo.js"></script>
   <script src="/bower_components/jquery.easing/js/jquery.easing.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round"
+        rel="stylesheet">
   <meta name="description"
         content="Cartographie des acteurs du site des Grands Voisins à l'Hôpital Saint Vincent de Paul, Paris">
   <meta property="og:type" content="place">
@@ -58,7 +59,7 @@
   <link rel="import" href="/src/gv-logo-mini/gv-logo-mini.html">
   <link rel="import" href="/src/gv-detail/gv-detail.html">
   <link rel="import" href="/src/search-results/search-results.html">
-  <link rel="import" href="/src/test-comp/test-comp.html">
+  <link rel="import" href="/src/av-logo/av-logo.html">
 </head>
 <body>
 
@@ -171,7 +172,9 @@
 
     </div>
     <footer>
-      2016 - Les Grands Voisins
+      <av-logo></av-logo>
+      - [[year]] -
+      <gv-logo-mini></gv-logo-mini>
     </footer>
 
   </template>
@@ -197,6 +200,9 @@
         searchTail: {
           type: Object,
           notify: true
+        },
+        year: {
+          value: (new Date()).getFullYear()
         }
       },
 

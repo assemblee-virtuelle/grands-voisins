@@ -152,8 +152,22 @@ footer {
   background-color: #F0F0F0;
   padding: 20px;
   text-align: center; }
+  /* line 186, ../scss/style.scss */
+  footer .gv-logo-mini,
+  footer .gv-logo-mini div,
+  footer .gv-logo-mini svg,
+  footer .av-logo-svg {
+    width: 40px;
+    display: inline;
+    vertical-align: middle; }
+  /* line 196, ../scss/style.scss */
+  footer .av-logo-svg path {
+    fill: rgba(0, 0, 0, 0.3); }
+  /* line 202, ../scss/style.scss */
+  footer .gv-logo-mini svg path {
+    stroke: rgba(0, 0, 0, 0.3); }
 
-/* line 187, ../scss/style.scss */
+/* line 208, ../scss/style.scss */
 body.dev-env #gv-logo-inner {
   animation-delay: 0s;
   display: none; }
