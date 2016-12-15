@@ -11,25 +11,9 @@
     constructor(mainComponent) {
       window.gvc = this;
       this.mainComponent = mainComponent;
-      this.buildings = {
-        "maisonDesMedecins": "Maison des médecins",
-        "lepage": "Lepage",
-        "pinard": "Pinard",
-        "lelong": "Lelong",
-        "pierrePetit": "Pierre Petit",
-        "laMediatheque": "La Médiathèque",
-        "ced": "CED",
-        "oratoire": "Oratoire",
-        "colombani": "Colombani",
-        "laLingerie": "La Lingerie",
-        "laChaufferie": "La Chaufferie",
-        "robin": "Robin",
-        "pasteur": "Pasteur",
-        "jalaguier": "Jalaguier",
-        "rapine": "Rapine"
-      };
 
       var final = [];
+
       for (let i in this.buildings) {
         final.push({
           key: i,
@@ -42,61 +26,79 @@
       if (window.location.hostname === '127.0.0.1') {
         window.document.body.classList.add('dev-env');
       }
-      // Load the first non semantic database.
-      this.ajax({
-        url: '/src/dataAsso.json', success: (e) => {
-          this.data = JSON.parse(e.responseText);
-          // Load peoples.
-          this.ajax({
-            url: '/src/dataPeople.json', success: (e) => {
-              this.dataPeople = JSON.parse(e.responseText);
-              // Shortcuts.
-              this.domSearchTextInput = this.domId('searchText');
-              this.domSearchResults = this.domId('searchResults');
-              this.domSearchTabs = this.domId('searchTabs');
-              this.domOrganization = this.domId('organization');
-              this.domSearchSelectBuilding = this.domId('searchSelectBuilding');
-              // Listeners.
-              var callbackSearchEvent = this.searchEvent.bind(this);
-              this.listen('searchForm', 'submit', (e) => {
-                this.scrollToSearch();
-                callbackSearchEvent(e);
-              });
-              this.listen('searchText', 'keyup', callbackSearchEvent);
-              this.listen('searchSelectBuilding', ['change'], callbackSearchEvent);
-              // Launch callbacks
-              this.isReady = true;
-              this.domSearchTextInput.focus();
-              this.stateSet('waiting');
-              this.$mapZones = $('#gvMap .mapZone');
-              this.mapIsOver = false;
-              this.mapTimeout = false;
-              // Bind two events.
-              this.$mapZones
-                //
-                .on('mouseover', (e) => {
-                  this.mapSelectBuilding(e.currentTarget.getAttribute('id').split('-')[1]);
-                })
-                //
-                .on('mouseout', (e) => {
-                  this.mapDeselectBuilding(e.currentTarget.getAttribute('id').split('-')[1]);
-                })
-                // Click.
-                .on('click', (e) => {
-                  this.domSearchSelectBuilding.value = e.currentTarget.getAttribute('id').split('-')[1];
-                  callbackSearchEvent();
-                  this.scrollToSearch();
-                });
+      var ajaxCounter = 0;
+      var allData = {};
+      var key;
+      var load = {
+        buildings: '/data/dataBuildings.json',
+        asso: '/data/dataAsso.json',
+        people: '/data/dataPeople.json'
+      };
+      var map = this;
 
-              // Ready callbacks.
-              for (let i in readyCallbacks) {
-                readyCallbacks[i]();
+      for (key in load) {
+        ajaxCounter++;
+        $.ajax({
+          url: load[key],
+          complete: function (key) {
+            return function (e) {
+              ajaxCounter--;
+              allData[key] = JSON.parse(e.responseText);
+              if (ajaxCounter === 0) {
+                map.start(allData);
               }
             }
-          });
+          }(key)
+        });
+      }
+    }
 
-        }
+    start(data) {
+      this.buildings = data.buildings;
+      this.data = data.asso; // We may rename this.
+      this.dataPeople = data;
+      // Shortcuts.
+      this.domSearchTextInput = this.domId('searchText');
+      this.domSearchResults = this.domId('searchResults');
+      this.domSearchTabs = this.domId('searchTabs');
+      this.domOrganization = this.domId('organization');
+      this.domSearchSelectBuilding = this.domId('searchSelectBuilding');
+      // Listeners.
+      var callbackSearchEvent = this.searchEvent.bind(this);
+      this.listen('searchForm', 'submit', (e) => {
+        this.scrollToSearch();
+        callbackSearchEvent(e);
       });
+      this.listen('searchText', 'keyup', callbackSearchEvent);
+      this.listen('searchSelectBuilding', ['change'], callbackSearchEvent);
+      // Launch callbacks
+      this.isReady = true;
+      this.domSearchTextInput.focus();
+      this.stateSet('waiting');
+      this.$mapZones = $('#gvMap .mapZone');
+      this.mapIsOver = false;
+      this.mapTimeout = false;
+      // Bind two events.
+      this.$mapZones
+        //
+        .on('mouseover', (e) => {
+          this.mapSelectBuilding(e.currentTarget.getAttribute('id').split('-')[1]);
+        })
+        //
+        .on('mouseout', (e) => {
+          this.mapDeselectBuilding(e.currentTarget.getAttribute('id').split('-')[1]);
+        })
+        // Click.
+        .on('click', (e) => {
+          this.domSearchSelectBuilding.value = e.currentTarget.getAttribute('id').split('-')[1];
+          callbackSearchEvent();
+          this.scrollToSearch();
+        });
+
+      // Ready callbacks.
+      for (let i in readyCallbacks) {
+        readyCallbacks[i]();
+      }
     }
 
     mapGetZone(key) {
