@@ -57,7 +57,7 @@
   <link rel="import" href="/src/search-result/search-result.html">
   <link rel="import" href="/src/gv-logo/gv-logo.html">
   <link rel="import" href="/src/gv-logo-mini/gv-logo-mini.html">
-  <link rel="import" href="/src/gv-detail/gv-detail.html">
+  <link rel="import" href="/src/gv-organization/gv-organization.html">
   <link rel="import" href="/src/search-results/search-results.html">
   <link rel="import" href="/src/av-logo/av-logo.html">
 </head>
@@ -159,7 +159,7 @@
 
       <iron-pages selected="[[routeData.page]]" attr-for-selected="name">
         <search-results name="search" route="{{searchTail}}"></search-results>
-        <gv-detail name="detail" route="{{searchTail}}"></gv-detail>
+        <gv-organization name="organization" route="{{searchTail}}"></gv-organization>
       </iron-pages>
 
       <br/>
