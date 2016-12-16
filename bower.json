@@ -8,7 +8,9 @@
     "page-title": "zacharytamas/page-title#^1.2.1",
     "jquery": "^3.1.1",
     "bootstrap": "^3.3.7",
-    "Waves": "waves#^0.7.5"
+    "Waves": "waves#^0.7.5",
+    "jquery.scrollTo": "^2.1.2",
+    "jquery.easing": "^1.3.1"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
