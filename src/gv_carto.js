@@ -12,16 +12,6 @@
       window.gvc = this;
       this.mainComponent = mainComponent;
 
-      var final = [];
-
-      for (let i in this.buildings) {
-        final.push({
-          key: i,
-          name: this.buildings[i]
-        });
-      }
-      this.mainComponent.buildings = final;
-
       // Special class for dev env.
       if (window.location.hostname === '127.0.0.1') {
         window.document.body.classList.add('dev-env');
@@ -63,6 +53,15 @@
       this.domSearchTabs = this.domId('searchTabs');
       this.domOrganization = this.domId('organization');
       this.domSearchSelectBuilding = this.domId('searchSelectBuilding');
+      // Fill up buildings list.
+      var final = [];
+      for (let i in this.buildings) {
+        final.push({
+          key: i,
+          name: this.buildings[i]
+        });
+      }
+      this.mainComponent.buildings = final;
       // Listeners.
       var callbackSearchEvent = this.searchEvent.bind(this);
       this.listen('searchForm', 'submit', (e) => {
@@ -90,8 +89,11 @@
         })
         // Click.
         .on('click', (e) => {
+          // Set value to current select.
           this.domSearchSelectBuilding.value = e.currentTarget.getAttribute('id').split('-')[1];
+          // Search.
           callbackSearchEvent();
+          // Scroll.
           this.scrollToSearch();
         });
 
