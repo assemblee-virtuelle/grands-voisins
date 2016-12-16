@@ -16,26 +16,30 @@
       if (window.location.hostname === '127.0.0.1') {
         window.document.body.classList.add('dev-env');
       }
-      var ajaxCounter = 0;
-      var allData = {};
-      var key;
-      var load = {
+
+      this.ajaxMultiple({
         buildings: '/data/dataBuildings.json',
         asso: '/data/dataAsso.json',
         people: '/data/dataPeople.json'
-      };
-      var map = this;
+      }, this.start);
+    }
 
-      for (key in load) {
+    ajaxMultiple(sources, callback) {
+      var key;
+      var ajaxCounter = 0;
+      var allData = {};
+      var self = this;
+      for (key in sources) {
         ajaxCounter++;
         $.ajax({
-          url: load[key],
+          url: sources[key],
           complete: function (key) {
             return function (e) {
               ajaxCounter--;
               allData[key] = JSON.parse(e.responseText);
+              // Final callback.
               if (ajaxCounter === 0) {
-                map.start(allData);
+                callback.call(self, allData);
               }
             }
           }(key)
