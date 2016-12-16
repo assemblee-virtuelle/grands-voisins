@@ -154,7 +154,7 @@ footer {
   text-align: center;
   color: rgba(0, 0, 0, 0.3); }
   /* line 188, ../scss/style.scss */
-  footer a {
+  footer a, footer a:hover {
     text-decoration: none; }
   /* line 192, ../scss/style.scss */
   footer .wexample-logo,
