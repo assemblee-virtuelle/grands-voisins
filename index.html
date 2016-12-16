@@ -60,6 +60,8 @@
   <link rel="import" href="/src/gv-organization/gv-organization.html">
   <link rel="import" href="/src/search-results/search-results.html">
   <link rel="import" href="/src/av-logo/av-logo.html">
+  <link rel="import" href="/src/wexample-logo/wexample-logo.html">
+  <link rel="import" href="/src/aurore-logo/aurore-logo.html">
 </head>
 <body>
 
@@ -159,7 +161,8 @@
 
       <iron-pages selected="[[routeData.page]]" attr-for-selected="name">
         <search-results name="search" route="{{searchTail}}"></search-results>
-        <gv-organization name="organization" route="{{searchTail}}"></gv-organization>
+        <gv-organization name="organization"
+                         route="{{searchTail}}"></gv-organization>
       </iron-pages>
 
       <br/>
@@ -172,9 +175,15 @@
 
     </div>
     <footer>
+      <wexample-logo></wexample-logo>
+      <span class="separator"></span>
       <av-logo></av-logo>
-      - [[year]] -
+      <span class="separator"></span>
+      [[year]]
+      <span class="separator"></span>
       <gv-logo-mini></gv-logo-mini>
+      <span class="separator"></span>
+      <aurore-logo></aurore-logo>
     </footer>
 
   </template>

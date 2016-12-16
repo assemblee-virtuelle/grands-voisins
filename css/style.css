@@ -149,10 +149,16 @@ header {
 /* line 180, ../scss/style.scss */
 footer {
   margin-top: 80px;
-  background-color: #F0F0F0;
+  background-color: #F5F5F5;
   padding: 20px;
-  text-align: center; }
-  /* line 186, ../scss/style.scss */
+  text-align: center;
+  color: rgba(0, 0, 0, 0.3); }
+  /* line 188, ../scss/style.scss */
+  footer a {
+    text-decoration: none; }
+  /* line 192, ../scss/style.scss */
+  footer .wexample-logo,
+  footer .aurore-logo,
   footer .gv-logo-mini,
   footer .gv-logo-mini div,
   footer .gv-logo-mini svg,
@@ -160,14 +166,28 @@ footer {
     width: 40px;
     display: inline;
     vertical-align: middle; }
-  /* line 196, ../scss/style.scss */
+  /* line 203, ../scss/style.scss */
+  footer .aurore-logo {
+    fill: rgba(0, 0, 0, 0.3);
+    height: 40px; }
+  /* line 208, ../scss/style.scss */
+  footer .wexample-logo {
+    fill: rgba(0, 0, 0, 0.3);
+    width: 20px;
+    height: 20px; }
+  /* line 215, ../scss/style.scss */
   footer .av-logo-svg path {
     fill: rgba(0, 0, 0, 0.3); }
-  /* line 202, ../scss/style.scss */
+  /* line 221, ../scss/style.scss */
   footer .gv-logo-mini svg path {
     stroke: rgba(0, 0, 0, 0.3); }
+  /* line 226, ../scss/style.scss */
+  footer .separator {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 0 30px;
+    height: 10px; }
 
-/* line 208, ../scss/style.scss */
+/* line 233, ../scss/style.scss */
 body.dev-env #gv-logo-inner {
   animation-delay: 0s;
   display: none; }
