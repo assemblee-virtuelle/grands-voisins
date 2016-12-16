@@ -1,5 +1,6 @@
 <dom-module id="gv-organization">
   <link rel="import" type="css" href="gv-organization.css">
+  <link rel="import" href="/src/gv-logo-mini/gv-logo-mini.html">
   <template>
     <div id="organization">
       <ul id="organizationTools" class="nav nav-tabs">
@@ -7,19 +8,18 @@
           <a id="organizationBack"
              href="javascript:history.back();"><span class="glyphicon glyphicon-chevron-left"></span>Retour</a>
         </li>
-        <li role="presentation" class="active">
-          <a id="organizationEdit"
-             href="#"><span class="glyphicon glyphicon-edit"></span>
-            Editer</a>
-        </li>
+        <!--<li role="presentation" class="active">-->
+          <!--<a id="organizationEdit"-->
+             <!--href="#"><span class="glyphicon glyphicon-edit"></span>-->
+            <!--Editer</a>-->
+        <!--</li>-->
       </ul>
       <div class="row">
-        <div class="col col-sm-8">
+        <div class="col col-sm-12">
           <h2>[[title]]</h2>
           <div class="organization-header row">
             <div class="organization-header col col-sm-4">
-              <img class="illustration"
-                   src="images/logo_les-grands-voisins.png">
+              <gv-logo-mini></gv-logo-mini>
             </div>
             <div class="organization-header col col-sm-8">
               <table class="organizationInfo">
@@ -70,22 +70,22 @@
             [[description]]
           </div>
         </div>
-        <div class="col col-sm-4">
-          <div class="block">
-            <h3>Emploie</h3>
-            <ul>
-              <li>
-                <a href="#">Personne 1</a>
-              </li>
-              <li>
-                <a href="#">Personne 2</a>
-              </li>
-              <li>
-                <a href="#">Personne 3</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <!--<div class="col col-sm-4">-->
+          <!--<div class="block">-->
+            <!--<h3>Emploie</h3>-->
+            <!--<ul>-->
+              <!--<li>-->
+                <!--<a href="#">Personne 1</a>-->
+              <!--</li>-->
+              <!--<li>-->
+                <!--<a href="#">Personne 2</a>-->
+              <!--</li>-->
+              <!--<li>-->
+                <!--<a href="#">Personne 3</a>-->
+              <!--</li>-->
+            <!--</ul>-->
+          <!--</div>-->
+        <!--</div>-->
       </div>
     </div>
   </template>

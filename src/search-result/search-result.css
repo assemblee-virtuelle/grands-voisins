@@ -45,9 +45,6 @@ h2 {
   color: #888;
 }
 
-.image {
-}
-
 .image img {
   width: 100%;
 }
@@ -59,3 +56,5 @@ h2 {
 .clearfix {
   clear: both;
 }
+
+

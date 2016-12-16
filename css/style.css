@@ -146,6 +146,11 @@ header {
 #searchResults p {
   text-align: justify; }
 
+/* line 175, ../scss/style.scss */
+.organization-header path,
+.search-result-content .image path {
+  stroke: rgba(0, 0, 0, 0.1); }
+
 /* line 180, ../scss/style.scss */
 footer {
   margin-top: 80px;
