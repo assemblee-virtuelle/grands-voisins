@@ -2,6 +2,7 @@ a, a:hover, a:active {
   position: relative;
   text-decoration: none;
   color: #555;
+  overflow: hidden;
 }
 
 a {
@@ -14,18 +15,6 @@ a:hover {
 
 a .chevron {
   display: none;
-}
-
-a:hover .chevron {
-  display: block;
-  position: absolute;
-  right: 27px;
-  top: 50%;
-  height: 14px;
-  margin-top: -16px;
-  opacity: .2;
-  width: 20px;
-  font-size: 30px;
 }
 
 .search-result-content {
@@ -57,4 +46,38 @@ a:hover .chevron {
   clear: both;
 }
 
+/* Desktop only */
+@media (max-width: 768px) {
+  .info {
+    border-top: 7px dashed #FFCC00;
+    padding: 20px 10px 10px;
+  }
+}
 
+@media (min-width: 768px) {
+  @keyframes resultHoverChevron {
+    0% {
+      margin-top: 10px;
+    }
+    100% {
+      margin-top: -16px;
+    }
+  }
+
+  a:hover .chevron {
+    display: block;
+    position: absolute;
+    right: 27px;
+    top: 50%;
+    height: 14px;
+    opacity: .2;
+    width: 20px;
+    font-size: 30px;
+    animation: resultHoverChevron 0.5s cubic-bezier(0,.34,.25,1) forwards;
+  }
+
+  .description {
+    color: #888;
+    margin-right: 60px;
+  }
+}

@@ -1,22 +1,30 @@
 /* line 1, ../scss/style.scss */
 body {
   margin: 0;
-  font-family: 'Varela Round', cursive;
+  font-family: 'Crafty Girls', cursive;
+  font-size: 2em;
   color: #555; }
 
-/* line 7, ../scss/style.scss */
+/* line 8, ../scss/style.scss */
+.page-detail h2 {
+  font-size: 40px;
+  border-bottom: 4px dashed #FFCC00;
+  padding-bottom: 10px;
+  margin-bottom: 20px; }
+
+/* line 15, ../scss/style.scss */
 a {
   color: #BB6600; }
 
-/* line 11, ../scss/style.scss */
+/* line 19, ../scss/style.scss */
 a:hover {
   color: #FFCC00; }
 
-/* line 15, ../scss/style.scss */
+/* line 23, ../scss/style.scss */
 .clearfix {
   clear: both; }
 
-/* line 21, ../scss/style.scss */
+/* line 29, ../scss/style.scss */
 header {
   animation: headerFadeIn 0.5s cubic-bezier(0.8, 0, 0.3, 0.9) forwards;
   background-color: #FFCC00;
@@ -29,7 +37,7 @@ header {
     top: -200px; }
   100% {
     top: 10px; } }
-  /* line 32, ../scss/style.scss */
+  /* line 40, ../scss/style.scss */
   header .logo-circle {
     position: absolute;
     background: #FFCC00;
@@ -39,52 +47,52 @@ header {
     height: 110px;
     padding: 12px 10px;
     top: -27px; }
-    /* line 41, ../scss/style.scss */
+    /* line 49, ../scss/style.scss */
     header .logo-circle img {
       width: 80px; }
-    /* line 44, ../scss/style.scss */
+    /* line 52, ../scss/style.scss */
     header .logo-circle h1 {
       display: none; }
-  /* line 49, ../scss/style.scss */
+  /* line 57, ../scss/style.scss */
   header .search {
     margin-top: 10px;
     margin-bottom: 10px; }
-    /* line 52, ../scss/style.scss */
+    /* line 60, ../scss/style.scss */
     header .search .nav {
       margin: 0 15px; }
-      /* line 54, ../scss/style.scss */
+      /* line 62, ../scss/style.scss */
       header .search .nav li {
         margin-top: 10px; }
-        /* line 56, ../scss/style.scss */
+        /* line 64, ../scss/style.scss */
         header .search .nav li a {
           padding-left: 15px; }
-          /* line 58, ../scss/style.scss */
+          /* line 66, ../scss/style.scss */
           header .search .nav li a span {
             margin-left: 0;
             margin-right: 8px; }
-    /* line 65, ../scss/style.scss */
+    /* line 73, ../scss/style.scss */
     header .search input[type=submit] {
       background: #333;
       border: 0;
       color: rgba(183, 154, 118, 0.95); }
-    /* line 70, ../scss/style.scss */
+    /* line 78, ../scss/style.scss */
     header .search input[type=submit]:hover {
       background: #fff192; }
   @media (max-width: 768px) {
-    /* line 76, ../scss/style.scss */
+    /* line 84, ../scss/style.scss */
     header .logo-circle {
       position: initial;
       width: auto;
       padding: 10px;
       height: auto;
       top: 0; }
-      /* line 82, ../scss/style.scss */
+      /* line 90, ../scss/style.scss */
       header .logo-circle img {
         width: auto; }
-    /* line 86, ../scss/style.scss */
+    /* line 94, ../scss/style.scss */
     header .col-search-logo {
       margin: -12vw 0 -8vw 0; }
-    /* line 89, ../scss/style.scss */
+    /* line 97, ../scss/style.scss */
     header .col-search-button,
     header .col-search-building {
       margin-top: 10px; } }
@@ -104,17 +112,17 @@ header {
     opacity: 0.2; }
   to {
     opacity: 0.05; } }
-/* line 122, ../scss/style.scss */
+/* line 130, ../scss/style.scss */
 #gvMap .mapContent .mapZone {
   cursor: pointer;
   animation: mapZoneFadeIn 0.2s cubic-bezier(0.8, 0, 0.3, 0.9) forwards; }
-/* line 126, ../scss/style.scss */
+/* line 134, ../scss/style.scss */
 #gvMap .mapContent .mapZone.strong {
   opacity: 0.4; }
-/* line 129, ../scss/style.scss */
+/* line 137, ../scss/style.scss */
 #gvMap .mapContent .mapZone.discreet:not(.strong) {
   animation: mapZoneFadeOut 0.5s cubic-bezier(0.8, 0, 0.3, 0.9) forwards; }
-/* line 132, ../scss/style.scss */
+/* line 140, ../scss/style.scss */
 #gvMap .mapContent .gvMapInner {
   border: 8px dashed #F0F0F0;
   transform: rotate(-1deg);
@@ -122,46 +130,46 @@ header {
   margin: 20px auto; }
 
 @media (max-width: 768px) {
-  /* line 145, ../scss/style.scss */
+  /* line 153, ../scss/style.scss */
   #gvMap .mapContent .gvMapInner {
     border: 0;
     transform: none;
     max-width: inherit;
     margin: 0; } }
-/* line 155, ../scss/style.scss */
+/* line 163, ../scss/style.scss */
 .nav-tabs a {
   color: #DDD !important;
   cursor: pointer !important; }
-  /* line 158, ../scss/style.scss */
+  /* line 166, ../scss/style.scss */
   .nav-tabs a span {
     margin-right: 8px; }
 
-/* line 164, ../scss/style.scss */
+/* line 172, ../scss/style.scss */
 #searchResults ul {
   padding: 0; }
-/* line 167, ../scss/style.scss */
+/* line 175, ../scss/style.scss */
 #searchResults li {
   list-style: none; }
-/* line 170, ../scss/style.scss */
+/* line 178, ../scss/style.scss */
 #searchResults p {
   text-align: justify; }
 
-/* line 175, ../scss/style.scss */
+/* line 183, ../scss/style.scss */
 .organization-header path,
 .search-result-content .image path {
   stroke: rgba(0, 0, 0, 0.1); }
 
-/* line 180, ../scss/style.scss */
+/* line 188, ../scss/style.scss */
 footer {
   margin-top: 80px;
   background-color: #F5F5F5;
   padding: 20px;
   text-align: center;
   color: rgba(0, 0, 0, 0.3); }
-  /* line 188, ../scss/style.scss */
+  /* line 196, ../scss/style.scss */
   footer a, footer a:hover {
     text-decoration: none; }
-  /* line 192, ../scss/style.scss */
+  /* line 200, ../scss/style.scss */
   footer .wexample-logo,
   footer .aurore-logo,
   footer .gv-logo-mini,
@@ -171,28 +179,28 @@ footer {
     width: 40px;
     display: inline;
     vertical-align: middle; }
-  /* line 203, ../scss/style.scss */
+  /* line 211, ../scss/style.scss */
   footer .aurore-logo {
     fill: rgba(0, 0, 0, 0.3);
     height: 40px; }
-  /* line 208, ../scss/style.scss */
+  /* line 216, ../scss/style.scss */
   footer .wexample-logo {
     fill: rgba(0, 0, 0, 0.3);
     width: 20px;
     height: 20px; }
-  /* line 215, ../scss/style.scss */
+  /* line 223, ../scss/style.scss */
   footer .av-logo-svg path {
     fill: rgba(0, 0, 0, 0.3); }
-  /* line 221, ../scss/style.scss */
+  /* line 229, ../scss/style.scss */
   footer .gv-logo-mini svg path {
     stroke: rgba(0, 0, 0, 0.3); }
-  /* line 226, ../scss/style.scss */
+  /* line 234, ../scss/style.scss */
   footer .separator {
     border-right: 1px solid rgba(0, 0, 0, 0.1);
     margin: 0 30px;
     height: 10px; }
 
-/* line 233, ../scss/style.scss */
+/* line 241, ../scss/style.scss */
 body.dev-env #gv-logo-inner {
   animation-delay: 0s;
   display: none; }
