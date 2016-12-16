@@ -22,7 +22,7 @@ a:hover .chevron {
   right: 27px;
   top: 50%;
   height: 14px;
-  margin-top: -12px;
+  margin-top: -16px;
   opacity: .2;
   width: 20px;
   font-size: 30px;
@@ -31,11 +31,11 @@ a:hover .chevron {
 .search-result-content {
   margin-bottom: 20px;
   display: block;
-  padding: 40px 10px;
+  padding: 10px 10px 3px;
 }
 
-h2 {
-  margin: 0;
+.search-result-content h2 {
+  margin: 5px 0 0 0;
   padding: 0;
   font-size: 17px;
   font-weight: bold;
