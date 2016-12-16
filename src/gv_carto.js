@@ -115,9 +115,11 @@
       this.mapIsOver = true;
       this.mapSelectCurrent = key;
       let zone = this.mapGetZone(this.mapSelectCurrent);
-      zone.classList.add('strong');
-      zone.classList.remove('discreet');
-      this.mapSelectBuildingToggle(true);
+      if (zone) {
+        zone.classList.add('strong');
+        zone.classList.remove('discreet');
+        this.mapSelectBuildingToggle(true);
+      }
     }
 
     mapDeselectBuilding() {

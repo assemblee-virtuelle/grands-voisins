@@ -1,6 +1,7 @@
 <dom-module id="gv-organization">
   <link rel="import" type="css" href="gv-organization.css">
   <link rel="import" href="/src/gv-logo-mini/gv-logo-mini.html">
+  <link rel="import" href="/src/gv-social-link/gv-social-link.html">
   <template>
     <div id="organization">
       <ul id="organizationTools" class="nav nav-tabs">
@@ -9,9 +10,9 @@
              href="javascript:history.back();"><span class="glyphicon glyphicon-chevron-left"></span>Retour</a>
         </li>
         <!--<li role="presentation" class="active">-->
-          <!--<a id="organizationEdit"-->
-             <!--href="#"><span class="glyphicon glyphicon-edit"></span>-->
-            <!--Editer</a>-->
+        <!--<a id="organizationEdit"-->
+        <!--href="#"><span class="glyphicon glyphicon-edit"></span>-->
+        <!--Editer</a>-->
         <!--</li>-->
       </ul>
       <div class="row">
@@ -20,71 +21,50 @@
           <div class="organization-header row">
             <div class="organization-header col col-sm-4">
               <gv-logo-mini></gv-logo-mini>
+              <div class="social-links">
+                <gv-social-link url="[[facebook]]"
+                                icon="facebook-square"></gv-social-link>
+                <gv-social-link url="[[twitter]]"
+                                icon="twitter"></gv-social-link>
+              </div>
             </div>
             <div class="organization-header col col-sm-8">
               <table class="organizationInfo">
-                <tr>
-                  <td>Statut</td>
-                  <td>[[status]]</td>
-                </tr>
-                <tr>
-                  <td>Type</td>
-                  <td>[[type]]</td>
-                </tr>
-                <tr>
-                  <td>Building</td>
+                <tr class="field field-building">
+                  <td class="fieldLabel">Bâtiment</td>
                   <td>[[building]]</td>
                 </tr>
-                <tr>
-                  <td>Site web</td>
-                  <td><a href="[[url]]" target="_blank">[[url]]</a></td>
-                </tr>
-                <tr>
-                  <td>Référent</td>
-                  <td>[[contact]]</td>
-                </tr>
-                <tr>
-                  <td>e-mail</td>
-                  <td>[[email]]</td>
-                </tr>
-                <tr>
-                  <td>Tél.</td>
-                  <td>[[phone]]</td>
+                <tr class="field field-url">
+                  <td class="fieldLabel">Site web</td>
+                  <td>
+                    <a href="[[url]]" target="_blank">[[url]]</a>
+                  </td>
                 </tr>
                 <tr>
                   <td></td>
-                  <td>[[phone2]]</td>
-                </tr>
-                <tr>
-                  <td>Facebook</td>
-                  <td>[[facebook]]</td>
-                </tr>
-                <tr>
-                  <td>Twitter</td>
-                  <td>[[twitter]]</td>
+                  <td>
+                    [[description]]
+                  </td>
                 </tr>
               </table>
             </div>
           </div>
-          <div class="description">
-            [[description]]
-          </div>
         </div>
         <!--<div class="col col-sm-4">-->
-          <!--<div class="block">-->
-            <!--<h3>Emploie</h3>-->
-            <!--<ul>-->
-              <!--<li>-->
-                <!--<a href="#">Personne 1</a>-->
-              <!--</li>-->
-              <!--<li>-->
-                <!--<a href="#">Personne 2</a>-->
-              <!--</li>-->
-              <!--<li>-->
-                <!--<a href="#">Personne 3</a>-->
-              <!--</li>-->
-            <!--</ul>-->
-          <!--</div>-->
+        <!--<div class="block">-->
+        <!--<h3>Emploie</h3>-->
+        <!--<ul>-->
+        <!--<li>-->
+        <!--<a href="#">Personne 1</a>-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--<a href="#">Personne 2</a>-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--<a href="#">Personne 3</a>-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--</div>-->
         <!--</div>-->
       </div>
     </div>
@@ -143,6 +123,13 @@
             url: data['Site Web']
           };
           // Search related peoples.
+          let displayFields = ['building', 'url', 'facebook', 'twitter'];
+          for (let i of displayFields) {
+            let domItem = $('.field-' + i)[0];
+            if (domItem) {
+              domItem.classList[filtered[i] ? 'remove' : 'add']('field-empty');
+            }
+          }
 
           for (i in filtered) {
             this.set(i, filtered[i]);

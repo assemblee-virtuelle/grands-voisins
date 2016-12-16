@@ -25,5 +25,21 @@ h3 {
 }
 
 ul, li {
-  list-style:none;
+  list-style: none;
+}
+
+.fieldLabel {
+  text-align: right;
+  color: #C0C0C0;
+  padding-right: 10px;
+}
+
+.social-links .social {
+  width: 40%;
+  margin: 5%;
+  float: left;
+}
+
+.organizationInfo .field-empty {
+  display: none;
 }
